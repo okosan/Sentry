@@ -1,0 +1,742 @@
+commit 98dc4639abe4beaad7c4a57b91f2736a51011985
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Mar 18 00:44:09 2018 +0200
+
+    Розширено дію Туману на Авіаносці і Перехоплювачі
+
+commit d56825d4c00c9edd21358633bd7518b949cd8291
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Mar 17 23:31:52 2018 +0200
+
+    Підтримка запуска програми у відлагоджувальному режимі
+    
+    Під час запуска провести пошук директорії з файлами рівнів серед двох допустимих варіантів - стандартного і відлагоджувального.
+
+commit dd17eaf966a431e4775014590edf9f3556925e61
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Mar 17 17:53:47 2018 +0200
+
+    copyrights added
+
+commit 841660f0be4e9fa988677654f996662895201558
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Mar 17 17:44:06 2018 +0200
+
+    Переклад коментарів і косметичні зміни
+
+commit a68b3064493aac9291217942c2da01468803c760
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Mar 17 17:10:19 2018 +0200
+
+    Вдосконалено завантажувач карти
+    
+    Можливість відключати динамічні об*єкти на карті.
+    Покращено обробку невідомих індикаторів динамічних об*єктів.
+
+commit 0934de44770e52ed5c35c2891ae51f8e689edd8c
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Mar 17 16:53:34 2018 +0200
+
+    Підготовка додавання Fox і Mushroom
+
+commit 89ae17114c417a5e7b876eb05c7dd28d1cc1c46d
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Mar 17 14:29:34 2018 +0200
+
+    Документування - специфікація
+
+commit 4e2b3e6b507434b29fef4955f71780bd571df391
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Mar 17 14:15:41 2018 +0200
+
+    Стилістичні зміни - переклад коментарів
+
+commit 6bfae2082f8f7664ad949243c3dffdee7fd5e234
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Dec 31 17:17:50 2017 +0200
+
+    Відлагоджувальна можливість лікувати щит кнопкою A
+    
+    Ефект аптечки, але лікує 10 одиниць щита
+
+commit e4c778ee34d8987a56b8e2b5f40e751d21d2840f
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Dec 31 17:02:43 2017 +0200
+
+    Додано можливість задавати розмір Хмари в файлі рівня
+    
+    Завантажувач рівня ініціалізує вказаний розмір Хмари
+
+commit 7f75809aee84acab5f5e071ff67bca13e024d85b
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Tue Oct 24 02:02:53 2017 +0300
+
+    Батон рухається кожні два кадра , Перехоплювачі створюються через кожні 5 кадрів, їх дії незалежні
+
+commit 58f89a8627fc40b14f4e5a3223be53ff95b71371
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Oct 22 02:00:10 2017 +0300
+
+    Додано конфігураційний флажок виведення міжрівневих повідомлень
+    
+    - закінчення рівня і кінець гри контролюється незалежно
+
+commit 18cf10649dcc122acec3fac155d1e112b96f6eb1
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Oct 21 00:23:06 2017 +0300
+
+    Косметичний рефакторінг
+
+commit 15a954be4d48c705795ff69b6e6c42aefc93fa4f
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Oct 21 00:19:08 2017 +0300
+
+    Зроблено узагальнення випадків логіки знищення об*єктів під прикриттям Стін
+
+commit ae58c201abad8bed46c14a97a8d9d4453ca9209d
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Mon Oct 16 01:59:34 2017 +0300
+
+    Перехоплювач має вказівник на материнський Батон
+
+commit 679f998af773189511960c981b9e54e3b2b0e7dc
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Oct 15 12:21:24 2017 +0300
+
+    Рефакторінг
+
+commit 32e2dbe372e096f2a20d495a25832ea123c175ba
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Oct 15 02:19:19 2017 +0300
+
+    Незначний рефакторінг
+
+commit e1f6ff557c2e28c05ae40302ebbbf819728e0345
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Oct 8 22:26:35 2017 +0300
+
+    Батон створює до 3 перехоплювачів
+
+commit 57a28347fe7498e1ce0a3218478c306f5ebc8b94
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Oct 8 22:06:44 2017 +0300
+
+    Всі перехоплювачі рухаються навколо першого Батона
+
+commit f31f8512b252a4e4c9078ede03c315c4affe58d0
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Oct 8 21:55:24 2017 +0300
+
+    Батон рухається по діагоналі кожні 5 кроків
+
+commit ad2dd58e86f4e3d473832141be3370d6301b404d
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Oct 8 21:35:58 2017 +0300
+
+    Перехоплювач рухається по заданій орбіті відносно стартової точки
+
+commit 3346c534baee9c08f025e1b4e1e8f85266419f15
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Oct 8 21:33:44 2017 +0300
+
+    Виправлена помилка у врахуванні флажка відключення Туману видимості
+
+commit 4310ff0e6578fa6f1404ee0ed3f025b4ef1cd95c
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Oct 7 12:30:50 2017 +0300
+
+    Зіткнення Хмари з Героєм обробляється для всього її периметру
+    
+    Додано файл специфікації "legenda01"
+    і допоміжний файл для обробки масиву Літачків "interceptors"
+
+commit 9866cc77965bf6414ddbc3010e1c72f81c808306
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Thu Oct 5 23:04:14 2017 +0300
+
+    Додано динамічні об*єкти Carrier + Interceptor
+
+commit 653aa71cdb24d97d75114cafa7c45cbcd5f53e66
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Thu Oct 5 22:38:28 2017 +0300
+
+    Enable interaction of explosion with dynamic objects
+
+commit 54b66f5bebc39964341ca5d7b91c3b7b1f916bd8
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Tue Oct 3 21:45:09 2017 +0300
+
+    Динамічний об*єкт Облако  можна малювати довільного розміру
+
+commit e6f91a3f821438530038d191acfbbbd5d4b4c620
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Mon Oct 2 23:00:39 2017 +0300
+
+    Виправлено виведення повідомлення в кінці кожного пройденого рівня
+    
+    Додано назву пройденого рівня
+
+commit c894de7099fc063dae97f18524fe9e7551394528
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Oct 1 21:52:22 2017 +0300
+
+    Minor code refactoring
+    
+    Remove unused code from old text mode renderer
+
+commit a9d334b752e18c20e6c242a17cc1dbcf2a341723
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Oct 1 21:51:44 2017 +0300
+
+    [Render]  level complete messages are now displayed properly in PDC mode
+
+commit b1578d29f977320516cb19663b6623ebeb86275f
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Sep 30 22:07:24 2017 +0300
+
+    Виведення номеру кадра на екран
+
+commit 938b3ac6f828870dc436bbc041f74a46ca6a25bd
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Sep 30 22:06:27 2017 +0300
+
+    Minor refactoring of render code
+
+commit fe7b0bfc2eb929a5c7eef583a409c4d39592e382
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Sep 30 22:04:33 2017 +0300
+
+    Added formatted string print utility functions
+
+commit 025ad1e60e3d135ba04f47fd03bccbe28cc725cd
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Sep 30 19:01:30 2017 +0300
+
+    Додано динамічний об*єкт Cloud
+    
+    Cloud циклічно рухається по діагоналі.
+    При зіткненні з Героєм наносить -1 щита.
+    Розмір Хмари – одна комірка.
+
+commit fa34a750992ec316ae17b123ee5f2b3a72668f76
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Fri Sep 29 21:00:10 2017 +0300
+
+    Додано статичний об*єкт MagicWell
+    
+    Додається +1 здоров*я при перебуванні Героя в комірці Фонтану кожен цілий крок. Заходження в Фонтан не враховується.
+
+commit 77942b0db03e736da0d14ae6b79f9dcb6f6c627f
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Thu Sep 28 22:29:11 2017 +0300
+
+    Робік та Прес невидимі, якщо вони поза зоною бачення на карті Туману
+
+commit 547b4a1a18cdc145c33350e47aa5edb31bb6c696
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Thu Sep 28 15:18:48 2017 +0300
+
+    Динаміт не знищує Двері.
+
+commit c7e67a301d516ae6d97b6a01e7cf82aa52636f7c
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Wed Sep 27 23:57:45 2017 +0300
+
+    Обробник реакції Світу на ареал вибуху в конкретних координатах
+    
+    тільки Жуки
+
+commit 1d1bee9843345c1029c255c87319496e799433fd
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Wed Sep 27 23:51:06 2017 +0300
+
+    Відлагоджувальний код для зупинки руху Привида
+
+commit fefc148af826ad0e5fbc8149c0d4c5e9e08cab34
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Wed Sep 27 19:12:51 2017 +0300
+
+    Продублювано логіку знищення об*єктів під прикриттям Стін
+    
+    Всі діагональні напрямки
+
+commit 2a8fbd7f8ebe5138d0eab5068d9fb79e6d714f77
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Wed Sep 27 00:40:11 2017 +0300
+
+    Протип зміни знищення обєктів якщо вони прикриті Стінами
+    
+    перевірка правої нижньої діагоналі
+
+commit 24e954a15fa1c175117e43519f40b7ce686de9a2
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Wed Sep 27 00:37:33 2017 +0300
+
+    Не розкривати карту Туману коли налаштовано розкривати карту Розвідки
+
+commit aefba6ede08fd5c1cb3ac276a408219402512640
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Tue Sep 26 23:34:15 2017 +0300
+
+    Малювати Жука тільки коли він в зоні бачення Героя
+    
+    враховуючи Карту Тумана
+
+commit 9a8eb0e5c59fa28b8627b7ed2cd26beb49d4272e
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Sep 23 20:15:23 2017 +0300
+
+    Виведення назви поточного рівня під час гри
+    
+    Назва рівня - посередині екрану вгорі
+
+commit 48d98ffe18694d76d94e0f64f72b46ed25633915
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Sep 23 20:13:07 2017 +0300
+
+    Вибухають всі статичні обєкти крім жорстких стін
+    
+    Виправлення в функції вибуху динаміту
+
+commit e15d42e3fd1991033c62caae334629c302e14421
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Fri Sep 15 21:05:44 2017 +0300
+
+    Написано код для вибуху статичних об*єктів під час ACTION_EXPLODE
+
+commit 2331161c3e0c39c849dc84a873e5b94efb41ebf6
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Tue Sep 12 00:08:09 2017 +0300
+
+    Перенесено поле-ідикатор ініціалізації дин. об*єктів в базовий клас
+
+commit 0fbc3859bee2d004ee25b4f748413087d9a1d452
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Mon Sep 11 23:39:13 2017 +0300
+
+    Узагальнено дані динамічних об*єктів в базовий об*єкт
+    
+    координати передані в базовий клас
+
+commit 3284f4bc602a706504e8cb690df15db4c25f7bcf
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Mon Sep 11 23:31:15 2017 +0300
+
+    Всі Динамічні об*єкти наслідуються від базового об*єкта
+
+commit dbf09013cd4baaa312e92a1cdbf9bb3f3991046c
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Mon Sep 11 23:26:06 2017 +0300
+
+    Заведено базовий Динамічний об*єкт
+    
+    Об*єкт Жука наслідується від базового Динамічного об*єкта (заглушка).
+
+commit b37cde234b144dc683ea73f48ce602e157013dfa
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Mon Sep 11 22:23:12 2017 +0300
+
+    Prototyping dinamite explosion
+
+commit 47c7c59b92ecc2155bd4e4f1728a5b8f3a73af7d
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Mon Sep 11 21:42:27 2017 +0300
+
+    Незначні косметичні зміни
+    
+    Документація
+
+commit 1a98f92faa0a6f8fae42b6e5eb13fc6c47a8a06b
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Sep 10 23:54:56 2017 +0300
+
+    Додано карту Туману
+    
+    - карта Туману накладається на візуалізацію карти
+    - оновлюється на кожному кадрі
+    - комірки в Тумані замальовуються ціановим кольором
+    - карта Туману завжди включена
+    - конфігураційний параметр визначає чи малювати карту Туману у правій (відлагоджувальній) половині екрану
+
+commit 90f026d50dda677abd2f68aaf0d716e60be04834
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Sep 10 20:45:21 2017 +0300
+
+    Введено параметр безумовного розкриття Карти розвідки
+    
+    - m_fDiscloseEntireMap це конфігураційний параметр який безумовно налаштовує очистку КартиРозвідки розкритими комірками
+
+commit 56223eaa5cfbba04d462a1e5f9e1c35cf14d2475
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Sep 10 19:24:14 2017 +0300
+
+    Створено об*єкт-контейнер ігрових параметрів XGameSettings
+    
+    - передає параметри малювання в КартуРозвідки (відключає рендерінг карти розвідки)
+    - передає параметри радіусу розвідки в КартуРозвідки
+
+commit c1e3f3ffb0e71b97888b567ae521e044769d25c1
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Sep 10 18:12:25 2017 +0300
+
+    Незначний рефакторінг в підсистемі Рендерінгу
+
+commit f5645a1af650d51e5419cc60963c44b4962d95ff
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Sep 10 17:17:31 2017 +0300
+
+    Карта розвідки накладається на карту відображення Світу
+
+commit eeb11b36c8034fdddd3e67a47ab9e45d943a6ed5
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Sep 10 16:02:46 2017 +0300
+
+    На карту розвідки правильно наносяться координати видимості розвіданої території
+
+commit 9b5cdffaeee985a51dbb0c151965ddafce0c6b26
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sat Sep 9 23:59:02 2017 +0300
+
+    Створено початкову версію карти розвідки
+    
+    Прототип заповнення і відображення карти розвідки
+
+commit 3d6a4341d5f432e49f0eda9300fb42145e45b16b
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Fri Sep 8 23:29:45 2017 +0300
+
+    Введено відлагоджувальну клавішу яка переводить Героя в стан Привида
+
+commit 13ecb6dbe574c70f3619bdb7739f8a966494eda4
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Fri Sep 8 22:46:45 2017 +0300
+
+    Бліни не вибухають при зіткненні з Героєм-Привидом
+
+commit c6c3e5c63e1c68977c86daf6508145bf7915de91
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Fri Sep 8 19:17:30 2017 +0300
+
+    Виведено індикатор невразливості на панелі HUD
+
+commit afe4c72154448f7f1d12302a6fdcf4836d8da31f
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Fri Sep 8 17:19:52 2017 +0300
+
+    Герой не проходить через об*єкт Слабка Стіна
+
+commit b113af528e4385955bafcac502808a384b2179ef
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Fri Sep 8 16:02:02 2017 +0300
+
+    Жук не активується при близькості до Героя в стані Привида
+
+commit b886622f26b2853e57ad25a844b38097b40f4b19
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Thu Sep 7 23:51:57 2017 +0300
+
+    Додано Слабку Стіну і нанесено на карту тестового рівня
+
+commit ef6177e1367e37247475856c847cc8d8803ff26c
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Thu Sep 7 23:00:38 2017 +0300
+
+    Зроблено обмеження тривалості активного стану Жука
+    
+    Якщо Жук вже >N ходів в Агресивному стані - переходить в Пасивний стан.
+
+commit def8f0b7a6d2b06a4f7903a7b9d86d1f2ed8bc96
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Thu Sep 7 21:26:32 2017 +0300
+
+    Встановлено заборону на проходження Жука через двері (червоні, зелені, сині).
+
+commit b778a37c65d3b72a2c464d6a7f94697314083c31
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Wed Sep 6 23:50:39 2017 +0300
+
+    Levels - adding sandbox testing level
+    
+    A level for testing changes in game mechanics will follow after level1
+
+commit 0bb1dc550caf2275d5285c310fd741806ed1eae9
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Wed Sep 6 22:47:00 2017 +0300
+
+    Незначний рефакторінг
+
+commit c83400e341956b048a3d96d4d33920bdad147ef1
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Wed Sep 6 21:55:57 2017 +0300
+
+    Ключ, Пастку і Динаміт тепер можна класти тільки в пусту комірку
+
+commit edd383a0cb0f37fa86ada0a40154bb255dee0178
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Tue Sep 5 23:25:27 2017 +0300
+
+    Заборонити кидати ключ і динаміт Герою в стані привида
+
+commit 8040cd5c4bd79bfe877beae6010caa3c6dede21f
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Tue Sep 5 22:58:02 2017 +0300
+
+    Динаміт може вибухати по команді користувача.
+    
+    Додано звук  вибуху динаміту.
+    На місці вибуху встановлюється пустота.
+    Вибухає перший знайдений динаміт на карті.
+
+commit 719bb1736f23f4774668e5607dcfb2a7492fe63c
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Tue Sep 5 01:16:18 2017 +0300
+
+    Додано об*єкт Динаміт
+    
+    - Динаміт додано в загрузчик карти рівня і відображення
+    - в героя 3 динаміта на старті. Може кидати динаміт.
+    - Додано звук Ефірної Пастки.
+
+commit e2723fadb2eaba5fb40a291c9fbf8f1fe8e811e8
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Sun Sep 3 22:20:38 2017 +0300
+
+    Додано синій ключ і сині двері
+    
+    На панель додано індикатор синього ключа і синіх дверей. На карту першого рівня додано синій ключ і сині двері
+
+commit a376fa5d9b9117dd539af7bbb293a01840b5bce1
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Thu Aug 31 22:29:27 2017 +0300
+
+    Додано зелений ключ і зелені двері.
+    
+    В гру додано можливість корисуватися зеленим ключем для проходу в зелені двері.
+    На панель додано індикатор зеленого ключа.
+    На карту першого рівня додано зелений ключ і зелені двері.
+
+commit 7da15ffd9caeec96aeedc5c60f5ae48a1f5a2dbe
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Thu Aug 31 01:33:27 2017 +0300
+
+    Сформовано план і прототип для Карти Розвідки
+    
+    Прототип відображає фіксовану ділянку (функціональна заглушка)
+
+commit 99da3ee7ad66171b110c89fdff963a913e28bfcf
+Author: TPopovich <t-popovich@ukr.net>
+Date:   Wed Aug 30 01:49:44 2017 +0300
+
+    незначні косметичні зміни в документації
+    
+    документування зміних Пресу і Робіка
+
+commit 34d9a9b3c4f68811a62310110ab65c12d04ff06b
+Author: Tetiana Popovich <t-popovich@ukr.net>
+Date:   Tue Aug 29 22:49:17 2017 +0300
+
+    Незначні вдосконалення документації кода.
+
+commit 81ef6aa7a6ffe1a2a0909c6d5f924da06f0eddb2
+Author: Tetiana Popovich <t-popovich@ukr.net>
+Date:   Tue Aug 29 22:15:52 2017 +0300
+
+    [Sentry] Масивна переробка графіки для підтримки бібліотеки PDCurses. Рефакторінг коду. Додано підтримку doxygen.
+
+commit 97211f53d075749757d9c0ce408691ea70cc2d3a
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Thu Jan 19 00:28:20 2017 +0100
+
+    minor code refactoring to reduce extern symbols usage, improve code readability and cosmetic changes
+
+commit 34c0993241452febd022d8630bd753b83e077067
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Tue Jan 17 00:00:21 2017 +0100
+
+    added level names. Names are indicated in level-complete stats view (along with fake score count).
+
+commit 073725e8d02235be93a14158de976dc6b71464cf
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Sun Jan 15 23:17:09 2017 +0100
+
+    changing visibility of Ghost object. Ghost is visible if its distance to player is <= 4 units AND no wall is between them.
+
+commit 68cb4de0c3445c3f8f6f8d5452bffb33346845bd
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Sun Jan 15 00:02:36 2017 +0100
+
+    allowing any amount of levels to be sequentially loaded. Added two cheat-codes: invulnerability and instant level finish. Hero can now transfer only 3 traps and 5 chitin to next level, cannot move key to next level, shield level is persisted across level transition. Display game level statistics stab after each level complete.
+
+commit e2b792163b582dee1f18f508923125f2e09e357c
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Wed Jan 11 00:23:48 2017 +0100
+
+    update plan5.txt
+
+commit 07874064b341a8b7b0d8e11fba0479ae0d8349b8
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Wed Jan 11 00:22:55 2017 +0100
+
+    added support for multiple levels (up to 3 predefined levels). Levels are following one-another, until last level. Last level finished brings congratulation message.
+
+commit df43f9d204e71fd00655e5224f469e785fb40127
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Mon Jan 9 23:10:45 2017 +0100
+
+    renamed level 1 map file
+
+commit 84abcfb5a90c45bd97d33562e9c06ef2449a36a7
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Mon Jan 9 23:08:43 2017 +0100
+
+    Press can now start at arbitrary phase - game map loader supports loading press with specific phase. Player-hero can now pick Chitin on place of destroyed Bug.
+
+commit e21b9431060ff42fef33ebcfdf79082ee32be2be
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Sun Jan 8 23:13:14 2017 +0100
+
+    robot moving logic and sign is changed. Now robot is displayed with smiley (when interactive) and with arrows when non-interactive. Robot moves following walls. Re-enabling Bug AI to allow moving.
+
+commit 73f10d7ac17b1530ab93842ce54b3a15d253f99d
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Sun Jan 8 02:19:04 2017 +0100
+
+    added trading robot Robik - exchanges Chitin into Traps
+
+commit d5667e0571909ca2fe0e8831b67369bf265b3d9c
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Sat Jan 7 20:46:20 2017 +0100
+
+    map updated
+
+commit b2366c62c204e1f8f42f0944e92912e9b4760277
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Sat Jan 7 20:45:51 2017 +0100
+
+    allowed arbitrary number of Bugs, Press and Ghosts on map. Allowed loading of dynamic objects from map file. Removed Lenin-ghost-place from map (became discontinued).
+
+commit c58924c66b7654560ed9a23d2f7b9492cf9d24c6
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Sat Jan 7 00:45:04 2017 +0100
+
+    moved ghost and hero into separate object. Moved implementation from input.h into definition module.
+
+commit d47e8a751f666bba9f42e24ab8fdd044301a55aa
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Fri Jan 6 20:06:28 2017 +0100
+
+    moved press into separate object and other minor refactoring
+
+commit d247cb5a6e802736acf8da4191d9b586c5cb19bd
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Thu Jan 5 23:57:45 2017 +0100
+
+    Load map from file. Requires absolute path to map file to be set correctly.
+
+commit f54f55acd9f998bd7cc3f5947087acc2ef8c0b80
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Thu Jan 5 21:44:34 2017 +0100
+
+    Code refactor to enable more modular approach. Moved Bug object code into separate class. Fixed two issues - hero cannot finish game with zero health. Hero cannot grab key.
+
+commit d040940a526ef81b980c78404c5baa5726bc2f47
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Sun Jan 1 19:22:51 2017 +0100
+
+    added two states for bug - it can now become agressive and passive. If bug is agressive it can bite. After bite bug needs 4 steps to recover, while this time it becomes and stays passive. Passive bug moves in random directions. Agressive bug tries to move towards hero. Scared bug state is not implemented.
+
+commit 5fd70a61382ca8d78ae33db14e5723a48ca29cae
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Sat Dec 31 21:31:50 2016 +0100
+
+    Created Bug object with basic random moving AI - moves either horizontal or vertical. Bug can interact with player-hero, damage hero. Bug can be killed by Press object. Fixed world Init procedure to reset all dynamic world object to their initial state.
+
+commit cfc4a106718187c6213bb64aa75ddf445845af8d
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Sat Dec 31 20:22:45 2016 +0100
+
+    minor code cleanup. Some comments added. WorldGetObjectLocation function added
+
+commit ede55c1fd194eaa8f5d5b61a030722de8db64f64
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Fri Dec 30 23:36:20 2016 +0100
+
+    ghost now is exploded by trap in radius of <2 world distance units
+
+commit 7cc5e3e98f379ff98f1746e835a5bf2b41ce1b4e
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Fri Dec 30 22:15:31 2016 +0100
+
+    Added ether-trap object on map. Added interaction between ghost and ether-trap. Deactivating ghost on collision with ether-trap. Moving ghost to start location on collision with trap. Ghost is not shown on screen when inactive. Given hero 3 ether-traps. Hero can drop ether-traps on map.
+
+commit 0049901180dbb44dd8746164369620daf572aabf
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Fri Dec 30 18:28:10 2016 +0100
+
+    added Blin explosion sound. Added ghost damage on collision with hero-player.
+
+commit 0e4bfe22216c2ac20ce34ceded66f12ec45ac80c
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Thu Dec 29 23:59:41 2016 +0100
+
+    implemented logic for Press and interaction with hero. Basic implementation of Ghost but without hero interaction.
+
+commit a2f4f1e064f61c30ee0ce68814647a48c1c4f940
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Thu Dec 29 19:39:37 2016 +0100
+
+    adding prototypes for game objects for Hero and Bug. Disable AI control by default
+
+commit 43ec5680c6d0b810bfe288c7af4aba194f73e4ed
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Wed Dec 28 22:08:05 2016 +0100
+
+    [AI] path planning - giving change to move in random directions to help handling long obstacles and cavities
+
+commit d85a74d474018d37bb72f26fe4c71b9cd07c42cc
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Wed Dec 28 21:07:19 2016 +0100
+
+    object AI can now move towards Key and Finish the game
+
+commit 8b43462bc735cf1620db50444868bec462b839ff
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Wed Dec 28 20:09:26 2016 +0100
+
+    simple AI to move towards key position
+
+commit 060fbaadab1f931b8633c2acc54b5eccd2672b6a
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Wed Dec 28 19:12:25 2016 +0100
+
+    separate input keys from input game actions
+
+commit 4398e1b6062bf01524e24d0b4d9fef7aa65966bb
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Mon Dec 26 23:53:17 2016 +0100
+
+    minor code cleanup and plan for next day
+
+commit 1ed5880d7c2ba5ba53e737bc73582fc5557af181
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Mon Dec 26 23:44:02 2016 +0100
+
+    code refactoring - split main.cpp into separate subsystems
+
+commit ef52564689c9df04fd691321a3f8636448a10a39
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Mon Dec 26 17:09:32 2016 +0100
+
+    added feature to drop the key. Moved text draw methods into separate function
+
+commit 3ec94364ce5e45d134984e39e3d96854644675c7
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Mon Dec 26 17:05:54 2016 +0100
+
+    second version with blins, keys, medkits, doors, finish, and congratulation message - 25-dec-2016
+
+commit dc4e6794726239b11e43a403aa045c8c1f7d5e33
+Author: Oleh Kosan <oleh.kosan@gmail.com>
+Date:   Mon Dec 26 17:02:43 2016 +0100
+
+    first version of BLOHA with walls and collision detection 24-dec-2016

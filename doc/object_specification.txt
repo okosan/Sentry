@@ -1,0 +1,79 @@
+﻿
+            ====== Debug keys/actions ======
+- c - ACTION_TRADE                     trade with Robik
+- d - ACTION_DROP_DINAMITE             drop dynamite
+- e - ACTION_EXPLODE                   detonate dynamite
+- f - ACTION_FORCE_LEVEL_COMPLETE      force instantly win level
+- i - ACTION_TOGGLE_INVINCIBLE         toggle player's invincibility
+- r - ACTION_REMOVE_SHIELD             instantly drain all shield from hero to become "Ghostly"
+- x - ACTION_DROP_TRAP                 drop trap at current position
+- z - ACTION_DROP_KEY                  drop red key at current position
+
+            ====== Map editor ======
+--------- Static object names on map -------------
+- A - MEDKIT
+- B - BLIN
+- C - CARRIER
+- D - DOOR
+- E -
+- F - Finish level
+- G - GHOST
+- H - MAGIC_WELL
+- I - INTERCEPTORS
+- J -
+- K - KEY
+- L - Lenin's mavzoleum
+- M - Mushrooms
+- N - BLUE_DOOR
+- O -
+- P - PRESS
+- Q - GREEN_KEY
+- R - ROBIK
+- S - WorldHeroStartLocation x,y
+- T - BLUE_KEY
+- U - GREEN_DOOR
+- V -
+- W - WEAK_WALL
+- X -
+- Y -
+- Z -
+- 1 -
+- 2 -
+- 3 -
+- 4 -
+- 5 -
+- 6 -
+- 7 -
+- 8 - CLOUD
+- 9 -
+- * - TRAP
+- - - WALL
+
+--------- Visual icon on map ---------
+- Ж - BUG_AGRESSIVE
+- ж - BUG_PASSIVE
+- ~ - BUG_KILLED
+- ъ - BUG_SCARED
+- 3 -
+- 4 -
+- 5 -
+- 6 -
+- 7 -
+
+
+-------- HUD and gameplay parameters ---
+BLIN_DAMAGE = 20;
+MEDKIT_HEALS = 25;
+MAGIC_WELL_HEALS = 1;
+GodMode - indicated when hero is invincible
+
+const int BUG_STATE_PASSIVE   = 0;  /// Passive beetle state
+const int BUG_STATE_AGRESSIVE = 1;  /// beetle is agressive
+const int BUG_STATE_SCARED    = 2;  /// beetle is scared
+
+const float BUG_RADIUS_BECOME_AGRESSIVE = 4.0f;
+
+const int BUG_DAMAGE = 30;
+const int BUG_NUMBER_OF_STEPS_TO_RECOVER_AFTER_ATTACK = 4;  // cooldown cycles needed to become agressive again
+
+const int BUG_MAX_NUMBER_OF_STEPS_IN_AGRESSIVE_STATE = 10;
