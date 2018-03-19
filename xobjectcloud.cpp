@@ -19,9 +19,6 @@ void XObjectCloud::stepAI()
 {
     if (m_isInitialized)
     {
-        //m_x ++;
-        //m_y ++;
-
         int worldW, worldH;
         getWorldDimensions(worldW, worldH);
 

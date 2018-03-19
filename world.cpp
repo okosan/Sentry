@@ -422,7 +422,6 @@ void generateMap()
     placeObjects(NUMBER_OF_MUSHROOMS_ON_START, OBJECT_MUSHROOMS);
 
 
-
     // Init dynamic objects
 
     /// Init bugs
@@ -495,14 +494,14 @@ bool loadMapFromFile(int loadableLevelNumber)
     {
         for (int x = 0; x < W; x++)
         {
-            char objectUGZ; // Conditional Graphic Images
-            scan_result = fscanf(pFile, "%c", &objectUGZ);
+            char staticObjectMapCode = 0;  // Char code of static object as defined on a Level Map
+            scan_result = fscanf(pFile, "%c", &staticObjectMapCode);
             if (scan_result != 1)
                 error_counter++;
 
             /// depending on the code of the
             /// conditional graphic image, sets the map object matrix.
-            switch(objectUGZ)
+            switch(staticObjectMapCode)
             {
             case('-'):
                 setMapValue(x, y, OBJECT_WALL);

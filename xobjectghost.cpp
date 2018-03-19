@@ -78,7 +78,10 @@ void XObjectGhost::stepAI()
 
             ///  Checking the collision with a trap
             int rTrapX, rTrapY;
-            bool trapExists; // true - if the trap exists, false - if the trap is not within the radius of the ghost (and the radius of the trap)
+
+            // true - if the trap exists
+            // false - if the trap is not within the radius of the ghost (and the radius of the trap)
+            bool trapExists;
 
             // call function (whether the Ghost is in the Trap area (input: Ghost coordinates, output - Trap coordinates)
             trapExists = worldIsObjectInZoneOfTrap(m_x, m_y, rTrapX, rTrapY);
@@ -144,7 +147,7 @@ descriptor_finish:
 
 draw_skip:
         {
-            /* do not add */
+            /* do not add to render list */
         }
     }
 

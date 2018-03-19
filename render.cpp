@@ -70,14 +70,18 @@ void initRender(bool enable_pdcurses, bool enable_graphics,
         nodelay(stdscr, TRUE);
         noecho();
         if (has_colors())
+        {
             start_color();
+        }
         attrset(A_NORMAL);
 
         curs_set(0);
 
         for (int i = 0; i < 8; i++)
+        {
             //init_pair(i, g_pdcColorTable[i], COLOR_BLACK);
             init_pair(i, g_pdcColorTable[i], COLOR_WHITE );
+        }
 
         g_renderIsPdCursesInitialized = true;
     }
@@ -114,6 +118,7 @@ OBJECT_RENDER_DESCRIPTOR getRenderDescriptorForCellType(int staticObjectType, in
         sign = SIGN_WALL;
         renderDescriptor.color_blue = 1.0;
         break;
+
     case(OBJECT_WEAK_WALL):
         sign = SIGN_WEAK_WALL;
         renderDescriptor.color_blue = 0.5f;
@@ -124,10 +129,12 @@ OBJECT_RENDER_DESCRIPTOR getRenderDescriptorForCellType(int staticObjectType, in
         sign = SIGN_DOOR;
         renderDescriptor.color_red = 1.0f;
         break;
+
     case(OBJECT_GREEN_DOOR):
         sign = SIGN_DOOR;
         renderDescriptor.color_green = 1.0f;
         break;
+
     case(OBJECT_BLUE_DOOR):
         sign = SIGN_DOOR;
         renderDescriptor.color_blue = 1.0f;
@@ -328,7 +335,6 @@ void renderMapPdc(const RENDER_HUD_INFOPANEL &hudInfo)
         vRenderDescriptorList.insert(vRenderDescriptorList.end(), vObjectRD.begin(), vObjectRD.end());
     }
 
-
     /// Ask the Bugs how they want to draw themselves.
     {
         for (int i = 0; i < WORLD_MAX_NUM_BUGS; i++)
@@ -358,7 +364,7 @@ void renderMapPdc(const RENDER_HUD_INFOPANEL &hudInfo)
         }
     }
 
-    /// Press draws itself above all objects.
+    /// Press draws itself
     {
         for (int i = 0; i < WORLD_MAX_NUM_PRESS; i++)
         {
@@ -368,7 +374,7 @@ void renderMapPdc(const RENDER_HUD_INFOPANEL &hudInfo)
         }
     }
 
-    /// Ask the Robiks how they want to draw themselves.
+    /// Ask every Robik how they want to draw themselves
     {
         for (int i = 0; i < WORLD_MAX_NUM_ROBIK; i++)
         {
@@ -378,7 +384,7 @@ void renderMapPdc(const RENDER_HUD_INFOPANEL &hudInfo)
         }
     }
 
-    /// Ask the Carriers how they want to draw themselves.
+    /// Ask every Carrier how they want to draw themselves
     {
         for (int i = 0; i< WORLD_MAX_NUM_CARRIER; i++)
         {
@@ -442,8 +448,7 @@ void renderMapPdc(const RENDER_HUD_INFOPANEL &hudInfo)
             }
             else
             {
-                // render emptyness!!!
-                // cell will remain black
+                // render void cell - will remain black (clearcolor)
             }
         }
     }
@@ -516,7 +521,7 @@ void renderMapPdc(const RENDER_HUD_INFOPANEL &hudInfo)
             mvaddstr(hudDrawOriginY, hudDrawOriginX + i, "*");
         }
 
-        // displays the level name in the top center
+        // display the level name in the top center
         {
             std::string l = getCurrentLevelName();
             int centerX = 80 / 2;
@@ -524,7 +529,7 @@ void renderMapPdc(const RENDER_HUD_INFOPANEL &hudInfo)
             mvaddstr(0, textX, l.c_str());
         }
 
-        // to see the number in the picture
+        // display the frame number
         {
             int nomerKadra = hudInfo.frameNumber;
 
@@ -654,8 +659,8 @@ void printLevelCompleteStats(std::string prevLevelName, std::string nextLevelNam
 
 #if 0
     printf("==========================================================================");
-    printf("                       Riven <%s> zakincheno! \n", prevLevelName.c_str());
-    printf("                       Kilkist Ochok: %d  \n", score);
+    printf("                       Level <%s> complete! \n", prevLevelName.c_str());
+    printf("                       Score count: %d  \n", score);
     printf("==========================================================================");
     printf("*** Press key to continue to next level <%s> ... \n", nextLevelName.c_str());
 #endif

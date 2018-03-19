@@ -14,10 +14,10 @@ extern XObjectPress press[WORLD_MAX_NUM_PRESS];
 
 
 const char SIGN_BUG            = 134;  // cyrillic Ж
-const char SIGN_BUG_KILLED     = '~'; // displayed when bug is killed
-const char SIGN_BUG_PASSIVE    = 166; // small cyrillic ж
-const char SIGN_BUG_AGRESSIVE  = 134; // cyrillic Ж
-const char SIGN_BUG_SCARED     = 234; // cyrillic ъ
+const char SIGN_BUG_KILLED     = '~';  // displayed when bug is killed
+const char SIGN_BUG_PASSIVE    = 166;  // small cyrillic ж
+const char SIGN_BUG_AGRESSIVE  = 134;  // cyrillic Ж
+const char SIGN_BUG_SCARED     = 234;  // cyrillic ъ
 
 
 const int BUG_STATE_PASSIVE   = 0;  /// Bug condition is passive

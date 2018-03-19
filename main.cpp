@@ -94,7 +94,6 @@ int main(int argc, char *argv[])
     }
     initInput();
 
-    //bool enable_pdcurses = false;
     bool enable_pdcurses = true;   /// Adds a color text mode.
 
     bool enable_graphics = false;  /// Three-dimensional graphics are not supported yet.

@@ -128,10 +128,11 @@ bool isUnderSolidCover(int epicenter_x, int epicenter_y, int test_x, int test_y)
     return false;
 }
 
-// If the character "kills" - he turns into a ghost, and we must take away
-// to the starting point so that it "resumes" (the keys remain there)
+// If the character is "killed" - he turns into a Ghost-state,
+// (keys and items persist with player character)
+// TODO: move player away to the level's Starting point?
 
-//0 - did not react (not my team)
+// 0 - did not react ("not my command")
 // 1 - responded
 // 2 - responded with a mistake
 bool XObjectPlayerHero::react(int actionCode)
@@ -145,7 +146,6 @@ bool XObjectPlayerHero::react(int actionCode)
     // The checkbox determines whether we are trying to make any movement
     // (if so, then check if we are dealing with walls)
     bool triesToMove = false;
-
 
     switch(actionCode)
     {
@@ -245,11 +245,13 @@ bool XObjectPlayerHero::react(int actionCode)
                         int value = getMapValue(x, y);
 
                         if ( (value != OBJECT_WALL) &&
-                             (value != OBJECT_DOOR) && (value != OBJECT_GREEN_DOOR) && (value != OBJECT_BLUE_DOOR) &&
+                             (value != OBJECT_DOOR) &&
+                             (value != OBJECT_GREEN_DOOR) &&
+                             (value != OBJECT_BLUE_DOOR) &&
                              (!isUnderSolidCover(dinx, diny, x, y)) )
                         {
                             setMapValue(x, y, OBJECT_EMPTY);
-                            // faktichno vidbuvsya vibuh v (x, y)
+                            // actual explosion in coordinates <X,Y>
                             worldNotifyExplosionInArea(x, y);
                         }
                     }

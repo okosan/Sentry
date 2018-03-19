@@ -62,7 +62,7 @@ void XObjectInterceptors::init(int startX, int startY, XDynamicObject *pCarrierO
     m_ox = startX;
     m_oy = startY;
 
-    m_index = 0;  // to initiate one of the 17 provisions of the airplane (first index)
+    m_index = 0;  // to initiate one of the 17 locations of the airplane (first index)
 
     m_pCarrierOwner = pCarrierOwner;
 
@@ -114,7 +114,7 @@ std::vector<OBJECT_RENDER_DESCRIPTOR> XObjectInterceptors::render()
 bool XObjectInterceptors::isCollided(int objectX, int objectY)
 {
     // collision test
-    if ((m_isInitialized == true))
+    if (m_isInitialized)
     {
         bool isIntersecting = false;
 

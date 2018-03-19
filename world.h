@@ -49,7 +49,7 @@ const int OBJECT_FIRST      = 0;
 
 const int OBJECT_EMPTY      = 0;
 const int OBJECT_WALL       = 1;
-const int OBJECT_BLIN       = 2;
+const int OBJECT_BLIN       = 2;  // Pancake and it explodes!
 const int OBJECT_MEDKIT     = 3;
 const int OBJECT_KEY        = 4;
 const int OBJECT_DOOR       = 5;
