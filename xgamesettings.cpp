@@ -1,5 +1,8 @@
 #include "xgamesettings.h"
 
+#include <string>
+#include <cstdio>
+
 XGameSettings::XGameSettings()
 {
     m_fDrawDiscoveryMap = false;    // true for debug
@@ -16,7 +19,26 @@ XGameSettings::XGameSettings()
 }
 
 /// return false if initialisation failed
-bool XGameSettings::init()
+bool XGameSettings::init(int argc, char *argv[])
 {
+    for (int i = 1; i < argc; i++)
+    {
+        std::string param = std::string(argv[i]);
+        if (param == "--help")
+        {
+            printf("Sentry v.0.0.1\n");
+            printf("TODO: add more info on supported parameters here.\n");
+            exit(1);
+        }
+        else if (param == "--debug")
+        {
+            m_fDiscloseEntireMap = true;
+            m_fEnableFogOfView   = false;
+
+            m_fEnableDisplayLevelCompleteScreen = false;
+            m_fEnableDisplayGameCompleteScreen = false;
+        }
+    }
+
     return true;
 }

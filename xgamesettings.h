@@ -7,7 +7,7 @@ class XGameSettings
 public:
     XGameSettings();
 
-    bool init();
+    bool init(int argc, char *argv[]);
 
     bool isEnableDrawDiscoveryMap() const
     {

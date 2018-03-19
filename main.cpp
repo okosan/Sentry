@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    g_gameSettings.init();
+    g_gameSettings.init(argc, argv);
 
     //setlocale(LC_ALL, "");
 
@@ -108,15 +108,6 @@ int main(int argc, char *argv[])
 
     updateHudInfoPanelData(hudInfo);
     drawScene(hudInfo);
-
-    /*
-    /// Prints the character table on the screen.
-    for (int i =128; i < 255; i++)
-    {
-        printf("Char code %d = %c\n", i, (char)i);
-    }
-    return a.exec();
-    */
 
     std::string prevLevel = m_currentLevelName;
 
@@ -172,7 +163,5 @@ int main(int argc, char *argv[])
     }
 
     unloadRender();
-    printf("Press any key to exit...");
-
-    return a.exec();
+    //return a.exec();
 }
