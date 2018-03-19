@@ -445,12 +445,16 @@ bool XObjectPlayerHero::react(int actionCode)
         }
     }
 
-    m_discoveryMap.update(m_x, m_y);
-    m_fogOfViewMap.update(m_x, m_y);
+    update();
 
     return f_reacted;
 }
 
+void XObjectPlayerHero::update()
+{
+    m_discoveryMap.update(m_x, m_y);
+    m_fogOfViewMap.update(m_x, m_y);
+}
 
 std::vector<OBJECT_RENDER_DESCRIPTOR> XObjectPlayerHero::render()
 {

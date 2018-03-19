@@ -106,12 +106,15 @@ int main(int argc, char *argv[])
 
     RENDER_HUD_INFOPANEL hudInfo;
 
-    updateHudInfoPanelData(hudInfo);
-    drawScene(hudInfo);
-
     std::string prevLevel = m_currentLevelName;
 
     isGameFinished = false;
+
+    // First level starts
+    hero.update();  // called to update fog of view and discovery map
+    updateHudInfoPanelData(hudInfo);
+    drawScene(hudInfo);
+
     while(1)
     {
         if (m_displayGameStatistics && g_gameSettings.isEnableDisplayLevelCompleteScreen())
@@ -126,6 +129,9 @@ int main(int argc, char *argv[])
             readInput();  // TODO: modify whith simpler funciton that waits for any key pressed
             m_displayGameStatistics = false;
 
+            // New (non-first) level starts
+            // TODO: unify with first level
+            hero.update();  // called to update fog of view and discovery map
             updateHudInfoPanelData(hudInfo);
             drawScene(hudInfo);
         }

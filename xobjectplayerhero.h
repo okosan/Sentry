@@ -40,6 +40,7 @@ public:
     void notifyAboutHealing(int healPoints);
 
     bool react(int actionCode);
+    void update();
 
     bool isCollidedWith(int objectX, int objectY);
 
