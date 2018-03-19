@@ -2,8 +2,8 @@
 
 XGameSettings::XGameSettings()
 {
-    m_fDrawDiscoveryMap = false;
-    m_fDrawFogOfViewMap = true;
+    m_fDrawDiscoveryMap = false;    // true for debug
+    m_fDrawFogOfViewMap = false;    // true for debug
 
     m_fDiscloseEntireMap = false;   // default: false
     m_fEnableFogOfView   = true;   // default: true
