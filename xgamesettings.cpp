@@ -6,7 +6,7 @@ XGameSettings::XGameSettings()
     m_fDrawFogOfViewMap = false;    // true for debug
 
     m_fDiscloseEntireMap = false;   // default: false
-    m_fEnableFogOfView   = true;   // default: true
+    m_fEnableFogOfView   = true;    // default: true
 
     m_discoveryRadiusX = 3;
     m_discoveryRadiusY = 3;

@@ -1,6 +1,6 @@
 # Sentry project
 
-Sentry roguelike text-based game
+Sentry is roguelike ASCII-based game.
 
 <TODO: insert full description here>
 

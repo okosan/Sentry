@@ -155,6 +155,11 @@ int main(int argc, char *argv[])
 
                 readInput();
 
+                if (inputGetLastAction() == ACTION_TERMINATE_GAME)
+                {
+                    break;
+                }
+
                 processActions();
 
                 worldStep();
@@ -165,6 +170,9 @@ int main(int argc, char *argv[])
             }
         }
     }
+
+    unloadRender();
+    printf("Press any key to exit...");
 
     return a.exec();
 }

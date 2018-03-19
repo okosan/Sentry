@@ -17,6 +17,7 @@ const int ACTION_DROP_DINAMITE        = 11; //  dynamite release
 const int ACTION_EXPLODE              = 12; //  detonate dropped dynamite (in sequential order, one at a time)
 const int ACTION_REMOVE_SHIELD        = 13; //  make Hero to the Ghostly state
 const int ACTION_HEAL_SHIELD          = 14; //  Heals 10 Shield units
+const int ACTION_TERMINATE_GAME       = 15; //  Instantly terminate game
 
 void initInput();
 

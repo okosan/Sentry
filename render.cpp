@@ -88,6 +88,11 @@ void initRender(bool enable_pdcurses, bool enable_graphics,
     }
 }
 
+void unloadRender()
+{
+    endwin();
+}
+
 /// Generate Render Descriptor for specific type of the static Cell object type
 OBJECT_RENDER_DESCRIPTOR getRenderDescriptorForCellType(int staticObjectType, int staticObjX, int staticObjY)
 {

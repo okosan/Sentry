@@ -7,11 +7,11 @@ int lastAction;
 #include <windows.h>
 
 
-const int KEY_UP = 72;     // vgoru
-const int KEY_DOWN = 80;   // vniz
-const int KEY_LEFT = 75;   // vlivo
-const int KEY_RIGHT = 77;  // vpravo
-
+const int KEY_UP     = 72;   // Arrow key up
+const int KEY_DOWN   = 80;   // Arrow key down
+const int KEY_LEFT   = 75;   // Arrow key left
+const int KEY_RIGHT  = 77;   // Arrow key right
+const int KEY_F12    = 134;  // F12 key - instantly terminate game
 
 void initInput()
 {
@@ -54,6 +54,9 @@ void readKeyboardInput()
             break;
         case(KEY_RIGHT):
             lastAction = ACTION_RIGHT;
+            break;
+        case(KEY_F12):
+            lastAction = ACTION_TERMINATE_GAME;
             break;
         }
     }

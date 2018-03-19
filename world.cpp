@@ -739,7 +739,7 @@ bool loadMapFromFile(int loadableLevelNumber)
     /// Closes the file.
     fclose(pFile);
 
-    printf("DEBUG: Zavantazhennya zaversheno z %d pomilok\n", error_counter);
+    printf("DEBUG: Loading complete with %d errors\n", error_counter);
     if (error_counter > 0)
     {
         return false;

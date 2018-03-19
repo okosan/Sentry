@@ -62,6 +62,7 @@ struct RENDER_HUD_INFOPANEL
 void initRender(bool enable_pdcurses, bool enable_graphics,
                 const XDiscoveryMap* pDiscoveryMap,
                 const XFogOfViewMap* pFogOfViewMap);
+void unloadRender();
 void drawScene(const RENDER_HUD_INFOPANEL &hudInfo);
 
 void printCongratulationMessage();
