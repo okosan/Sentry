@@ -4,11 +4,11 @@
 
 #include "world.h"
 #include "input.h"
+#include "sound.h"
 
 #include "xobjectplayerhero.h"
 extern XObjectPlayerHero hero;
 
-#include "windows.h"
 #include <cassert>
 
 const char SIGN_ROBIK_NORMAL      = 'r'; // 0x01; // 'r'; //
@@ -205,7 +205,7 @@ bool XObjectRobik::react(int actionCode)
             if (m_isReadyForInteraction)
             {
                 hero.tradeChitin();
-                Beep(7000, 150); // It's a deal!
+                soundRobikTrade(); // It's a deal!
                 f_reacted = true;
             }
             break;

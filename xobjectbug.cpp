@@ -1,9 +1,9 @@
 #include "xobjectbug.h"
 
 #include "world.h"
+#include "sound.h"
 
 #include <cstdio>
-#include <windows.h>
 
 #include "xobjectpress.h"
 #include "xobjectplayerhero.h"
@@ -238,9 +238,10 @@ descriptor_finish:
     return vRenderDescriptors;
 }
 
+// Emit sound when bug receives damage
 void XObjectBug::soundDamaged()
 {
-    Beep(100, 100);
+    soundBugDamage();
 }
 
 ///Return return true if the ghost has to become aggressive, otherwise return false.

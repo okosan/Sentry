@@ -79,13 +79,13 @@ bool isMovingInDirectionOfObject(int inputAction, int objectType)
         float len_to_object_before_move = worldGetDistance(objectX, objectY, Ex, Ey);
         float len_to_object_after_move = worldGetDistance(objectX, objectY, copyEx, copyEy);
 
-        bool viddalyayemos = false;
+        bool is_moving_away = false;
         if (len_to_object_after_move > len_to_object_before_move)
         {
-            viddalyayemos = true;
+            is_moving_away = true;
         }
 
-        if (viddalyayemos)
+        if (is_moving_away)
         {
             is_moving_in_direction_of_object = false;
         }

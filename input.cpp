@@ -4,7 +4,6 @@ int lastAction;
 
 
 #include <conio.h>
-#include <windows.h>
 
 
 const int KEY_UP     = 72;   // Arrow key up

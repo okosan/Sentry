@@ -11,4 +11,8 @@ void soundTrap();
 
 void soundDinamite();
 
+void soundRobikTrade();
+
+void soundBugDamage();
+
 #endif // SOUND_H
