@@ -21,39 +21,45 @@ Playing game is a good start.
 * Build game or get pre-built binary somewhere (TODO: where?).
 * Run game.
 
-Controls:
-Key     | Action
-------- | ---------------------------------------
-```←``` | move left
-```→``` | move right
-```↑``` | move up
-```↓``` | move down
-```x``` | drop Trap
-```z``` | drop Key
-```d``` | drop Dynamite
-```e``` | explode one Dynamite on a map
-```c``` | construct Dynamite from Chitin in Robik
+###Controls
 
-Map legend:
-Symbol | Meaning
------- | -----------------------------------
-`@`    | Player character
-`█`    | Strong wall
-`Z`    | Destroyable wall
-`░`    | Door (colour matters)
-`A`    | Medkit
-`H`    | Healing lake
-`¤`    | Pancake
-`╜`    | Key (colour matters)
-`Ж`    | Beetle
-`■`    | Pressing walls
-`F`    | Level exit
-`R`    | Robik (interactive wending machine)
-`=`    | Dropped dynamite
-`C`    | Carrier
-`I`    | Interceptor
-`8`    | Toxic cloud
-`M`    | Mushroom
+```
+| Key | Action                                  |
+| --- | --------------------------------------- |
+|  ←  | move left                               |
+|  →  | move right                              |
+|  ↑  | move up                                 |
+|  ↓  | move down                               |
+|  x  | drop Trap                               |
+|  z  | drop Key                                |
+|  d  | drop Dynamite                           |
+|  e  | explode one Dynamite on a map           |
+|  c  | construct Dynamite from Chitin in Robik |
+```
+
+###Map legend
+
+```
+| Symbol | Meaning                             |
+| ------ | ----------------------------------- |
+|   @    | Player character                    |
+|   █    | Strong wall                         |
+|   Z    | Destroyable wall                    |
+|   ░    | Door (colour matters)               |
+|   A    | Medkit                              |
+|   H    | Healing lake                        |
+|   ¤    | Pancake                             |
+|   ╜    | Key (colour matters)                |
+|   Ж    | Beetle                              |
+|   ■    | Pressing walls                      |
+|   F    | Level exit                          |
+|   R    | Robik (interactive wending machine) |
+|   =    | Dropped dynamite                    |
+|   C    | Carrier                             |
+|   I    | Interceptor                         |
+|   8    | Toxic cloud                         |
+|   M    | Mushroom                            |
+```
 
 ## Legal Stuff
 Project has dependency on PDCurses library and (maybe) other libraries (see ```Sentry/thirdparty/```).
