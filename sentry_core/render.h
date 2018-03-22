@@ -3,7 +3,7 @@
 
 #include <string>
 
-const char SIGN_EMPTY  = 250;      // dot in a middle
+const char SIGN_EMPTY  = ' ';      // empty space
 const char SIGN_WALL   = 219;      // the icon of the Wall
 const char SIGN_BLIN   = 253;      // a Bomb
 const char SIGN_MEDKIT = 'A';      // a Medkit

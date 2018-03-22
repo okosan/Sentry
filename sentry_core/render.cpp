@@ -405,6 +405,7 @@ void renderMapPdc(const RENDER_HUD_INFOPANEL &hudInfo)
     int drawOriginX = 0;
     int drawOriginY = 2;
 
+#if 1
     /// Sum up and draw everything.
     for (int y = 0; y < H; y++)
     {
@@ -452,6 +453,33 @@ void renderMapPdc(const RENDER_HUD_INFOPANEL &hudInfo)
             }
         }
     }
+#else
+    // Draw char table
+    {
+        OBJECT_RENDER_DESCRIPTOR renderDescWhite;
+        renderDescWhite.color_red = 0;
+        renderDescWhite.color_green = 1;
+        renderDescWhite.color_blue = 0;
+        int colorSetting = getPdcColorSettingForRenderDescriptor(renderDescWhite);
+
+//        char strBuf[4] = {};
+        int strBuf[4] = {};
+        //strBuf[0] = 0;
+        //strBuf[1] = 0;
+
+        int charindex = 0;
+        for (int y = 0; y < 16; y++)
+        {
+            for (int x = 0; x < 16; x++)
+            {
+                strBuf[0] = charindex;
+                attrset(colorSetting);
+                mvaddstr(drawOriginY + y, drawOriginX + x, (const char*)strBuf);
+                charindex++;
+            }
+        }
+    }
+#endif
 
     // ------------------------------------------------
     int hudDrawOriginX = 0;

@@ -1280,7 +1280,7 @@ std::string worldGetFilePathForLevel(int loadableLevelNumber)
     static int start_index_for_directory = -1;
 
     const std::string map_directory_normal("levels/");
-    const std::string map_directory_debug("../Sentry/levels/");
+    const std::string map_directory_debug("../../Sentry/levels/");
 
     const std::string *possible_directories[] = {&map_directory_normal, &map_directory_debug};
 
