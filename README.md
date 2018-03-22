@@ -21,7 +21,7 @@ Playing game is a good start.
 * Build game or get pre-built binary somewhere (TODO: where?).
 * Run game.
 
-###Controls
+### Controls
 
 ```
 | Key | Action                                  |
@@ -37,7 +37,7 @@ Playing game is a good start.
 |  c  | construct Dynamite from Chitin in Robik |
 ```
 
-###Map legend
+### Map legend
 
 ```
 | Symbol | Meaning                             |
