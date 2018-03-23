@@ -15,6 +15,9 @@
 
 #include <math.h>
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <list>
 
 #include "render.h"
 
@@ -444,14 +447,297 @@ void generateMap()
     }
 }
 
+bool _decodeStaticCodeAndSetMapValue(char staticObjectMapCode, int x, int y)
+{
+    bool isValid = true;
+
+    // depending on the map code set the static object on a matrix
+    switch(staticObjectMapCode)
+    {
+    case('-'):
+        setMapValue(x, y, OBJECT_WALL);
+        break;
+    case('w'):
+        setMapValue(x, y, OBJECT_WEAK_WALL);
+        break;
+     case('*'):
+        setMapValue(x, y, OBJECT_TRAP);
+        break;
+    case('d'):
+        setMapValue(x, y, OBJECT_DINAMITE);
+        break;
+    case('B'):
+        setMapValue(x, y, OBJECT_BLIN);
+        break;
+    case('D'):
+        setMapValue(x, y, OBJECT_DOOR);
+        break;
+    case('U'):
+        setMapValue(x, y, OBJECT_GREEN_DOOR);
+        break;
+    case('N'):
+        setMapValue(x, y, OBJECT_BLUE_DOOR);
+        break;
+    case('K'):
+        setMapValue(x, y, OBJECT_KEY);
+        break;
+    case('Q'):
+        setMapValue(x, y, OBJECT_GREEN_KEY);
+        break;
+    case('T'):
+        setMapValue(x, y, OBJECT_BLUE_KEY);
+        break;
+    case('F'):
+        setMapValue(x, y, OBJECT_FINISH);
+        break;
+    case('.'):
+        setMapValue(x, y, OBJECT_EMPTY);
+        break;
+    case('A'):
+        setMapValue(x, y, OBJECT_MEDKIT);
+        break;
+    case('H'):
+        setMapValue(x, y, OBJECT_MAGIC_WELL);
+        break;
+
+    case('S'):
+        WorldHeroStartLocationX = x;
+        WorldHeroStartLocationY = y;
+        setMapValue(x, y, OBJECT_EMPTY);
+        break;
+
+    case('M'):
+        setMapValue(x, y, OBJECT_MUSHROOMS);
+        break;
+
+    case('L'):
+        isValid = false;
+        [[clang::fallthrough]];
+    default:
+        setMapValue(x, y, OBJECT_EMPTY);
+        break;
+    }
+    return isValid;
+}
+
+bool _loadMapFromStaticData(std::list< std::string > &_vStaticMapData)
+{
+    int error_counter = 0;
+
+    // Clear map
+    clearMap();
+
+    int y = 0;
+    for (const auto &line : _vStaticMapData)
+    {
+        int x = 0;
+        for (const char staticObjectMapCode : line)
+        {
+            if (!_decodeStaticCodeAndSetMapValue(staticObjectMapCode, x, y))
+            {
+                error_counter++;
+            }
+            x++;
+        }
+
+        y++;
+    }
+
+    if (error_counter != 0)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+bool _decodeDynamicObjectAndAddToWorld(const std::string & line)
+{
+    char indicator = 0;
+
+    if (line.empty())
+    {
+        return true;
+    }
+    // TODO: skip strings with whitespace
+
+    int scan_result = sscanf(line.c_str(), "%c", &indicator);
+    if (scan_result != 1)
+    {
+        return false;
+    }
+    //printf("DEBUG: Read indicator from map file <%c>\n", indicator);
+
+    switch(indicator)
+    {
+    // Loading beetles
+    case('J'):
+    {
+        int x, y;
+        sscanf(line.c_str(), "%c-%d,%d", &indicator, &x, &y);
+        bool place_result = worldAddOneObjectBug(x, y);
+        if (place_result == true)
+        {
+            printf("DEBUG: Adding Bug in coords: %d, %d\n", x, y);
+        }
+        else
+        {
+            printf("Error: Unable to add Bug in coords: %d, %d\n", x, y);
+            return false;
+        }
+        break;
+    }
+
+    // Press
+    case('P'):
+    {
+        int x, y, phase;
+        sscanf(line.c_str(), "%c-%d,%d-%d", &indicator, &x, &y, &phase);
+        bool place_result = worldAddOneObjectPress(x, y, phase);
+        if (place_result == true)
+        {
+            printf("DEBUG: Adding Press in coords: %d, %d. Phase = %d\n", x, y, phase);
+        }
+        else
+        {
+            printf("Error: Unable to add Press in coords: %d, %d. Phase = %d\n", x, y, phase);
+            return false;
+        }
+        break;
+    }
+
+    case('G'):
+    {
+        int x, y;
+        sscanf(line.c_str(), "%c-%d,%d", &indicator, &x, &y);
+
+        bool place_result = worldAddOneObjectGhost(x, y);
+        if (place_result == true)
+        {
+            printf("DEBUG: Adding Ghost in coords: %d, %d\n", x, y);
+        }
+        else
+        {
+            printf("   Error: Unable to add Ghost in coords: %d, %d\n", x, y);
+            return false;
+        }
+
+        break;
+    }
+
+    case('8'):
+    {
+        int x, y;
+        int cloud_w, cloud_h;
+        sscanf(line.c_str(), "%c-%d,%d-%dx%d", &indicator, &x, &y, &cloud_w, &cloud_h);
+
+        bool place_result = worldAddOneObjectCloud(x, y, cloud_w, cloud_h);
+        if (place_result == true)
+        {
+            printf("DEBUG: Adding Cloud in coords: %d, %d\n", x, y);
+        }
+        else
+        {
+            printf("Error: Unable to add Cloud in coords: %d, %d\n", x, y);
+            return false;
+        }
+
+        break;
+    }
+
+    case('R'):
+    {
+        int x, y;
+        sscanf(line.c_str(), "%c-%d,%d", &indicator, &x, &y);
+
+        bool place_result = worldAddOneObjectRobik(x, y);
+        if (place_result == true)
+        {
+            printf("DEBUG: Adding Robik in coords: %d, %d\n", x, y);
+        }
+        else
+        {
+            printf("Error: Unable to add Robik in coords: %d, %d\n", x, y);
+            return false;
+        }
+
+        break;
+    }
+
+    case('C'):
+    {
+        int x, y;
+        sscanf(line.c_str(), "%c-%d,%d", &indicator, &x, &y);
+
+        bool place_result = worldAddOneObjectCarrier(x, y);
+        if (place_result == true)
+        {
+            printf("DEBUG: Adding Carrier in coords: %d, %d\n", x, y);
+        }
+        else
+        {
+            printf("Error: Unable to add Carrier in coords: %d, %d\n", x, y);
+            return false;
+        }
+
+        break;
+    }
+#if 0
+    case('I'):
+    {
+        int x, y;
+        sscanf(line.c_str(), "%c-%d,%d", &indicator, &x, &y);
+
+        bool place_result =  worldAddOneObjectInterceptors(x, y, 0);
+        if (place_result == true)
+        {
+            printf("DEBUG: Adding Interceptors in coords: %d, %d\n", x, y);
+        }
+        else
+        {
+            printf("Error: Unable to add Interceptors in coords: %d, %d\n", x, y);
+            return false;
+        }
+
+        break;
+    }
+#endif
+    case('#'):
+    {
+        printf("DEBUG: Skipping commented out line\n");
+        break;
+    }
+
+    default:
+        printf("Error: Unknown dynamic object indicator <%c> found on map!\n", indicator);
+        return false;
+    }
+    return true;
+}
+
+bool _loadMapDynamicObjects(std::list< std::string > &_vDynamicObjectCreationList)
+{
+    int error_counter = 0;
+    for (const auto &line : _vDynamicObjectCreationList)
+    {
+        if (!_decodeDynamicObjectAndAddToWorld(line))
+        {
+            error_counter++;
+        }
+    }
+    if (error_counter != 0)
+    {
+        return false;
+    }
+
+    return true;
+}
+
 /// Load the level objects (static and dynamic) from the file by level number.
 bool loadMapFromFile(int loadableLevelNumber)
 {
-    int error_counter = 0;
-    int scan_result = 0;
-
-    /// Opens the map file.
-    /// Reads height and width.
+    // Opens the map file
+    // Extracted height and width
     W = -1;
     H = -1;
 
@@ -460,8 +746,8 @@ bool loadMapFromFile(int loadableLevelNumber)
     const char* cstrFullPath = full_path.c_str();
 
     // open the file
-    FILE * pFile = fopen (cstrFullPath, "r");
-    if (pFile == NULL)
+    std::ifstream infile(cstrFullPath);
+    if (!infile.is_open())
     {
         printf("FAIL. Unable to load file <%s> for level %d\n", cstrFullPath, loadableLevelNumber);
         return false;
@@ -469,278 +755,60 @@ bool loadMapFromFile(int loadableLevelNumber)
 
     printf("DEBUG: Map is loaded from <%s>\n", cstrFullPath);
 
-    /// Reads all map data.
-    /// Title level
-    char bufMapName[256];
-    scan_result = fscanf(pFile, "%s\n", bufMapName); // TODO: fix potential buffer overflow bug
-    if (scan_result != 1)
-        error_counter++;
-    m_currentLevelName = std::string(bufMapName);
+    std::string line;
+    int line_index = 0;
 
-    /// Reads world dimensions from map
-    scan_result = fscanf(pFile, "%d\n", &W);
-    if (scan_result != 1)
-        error_counter++;
+    std::list< std::string > vStaticMapData;
+    std::list< std::string > vDynamicObjectCreationList;
 
-    scan_result = fscanf(pFile, "%d\n", &H);
-    if (scan_result != 1)
-        error_counter++;
-
-    /// Clears the map.
-    clearMap();
-
-    /// Load static map items.
-    for (int y = 0; y < H; y++)
+    while (std::getline(infile, line))
     {
-        for (int x = 0; x < W; x++)
-        {
-            char staticObjectMapCode = 0;  // Char code of static object as defined on a Level Map
-            scan_result = fscanf(pFile, "%c", &staticObjectMapCode);
-            if (scan_result != 1)
-                error_counter++;
+        std::istringstream iss(line);
 
-            /// depending on the code of the
-            /// conditional graphic image, sets the map object matrix.
-            switch(staticObjectMapCode)
+        if (line_index == 0)
+        {
+            // Level title
+            m_currentLevelName = line;
+        }
+        else if (line_index == 1)
+        {
+            // Reads world dimensions from map
+            iss >> W;
+        }
+        else if (line_index == 2)
+        {
+            // Reads world dimensions from map
+            iss >> H;
+        }
+        else
+        {
+            if ((line_index >= 3) && (line_index < 3+H))
             {
-            case('-'):
-                setMapValue(x, y, OBJECT_WALL);
-                break;
-            case('w'):
-                setMapValue(x, y, OBJECT_WEAK_WALL);
-                break;
-             case('*'):
-                setMapValue(x, y, OBJECT_TRAP);
-                break;
-            case('d'):
-                setMapValue(x, y, OBJECT_DINAMITE);
-                break;
-            case('B'):
-                setMapValue(x, y, OBJECT_BLIN);
-                break;
-            case('D'):
-                setMapValue(x, y, OBJECT_DOOR);
-                break;
-            case('U'):
-                setMapValue(x, y, OBJECT_GREEN_DOOR);
-                break;
-            case('N'):
-                setMapValue(x, y, OBJECT_BLUE_DOOR);
-                break;
-            case('K'):
-                setMapValue(x, y, OBJECT_KEY);
-                break;
-            case('Q'):
-                setMapValue(x, y, OBJECT_GREEN_KEY);
-                break;
-            case('T'):
-                setMapValue(x, y, OBJECT_BLUE_KEY);
-                break;
-            case('F'):
-                setMapValue(x, y, OBJECT_FINISH);
-                break;
-            case('.'):
-                setMapValue(x, y, OBJECT_EMPTY);
-                break;
-            case('A'):
-                setMapValue(x, y, OBJECT_MEDKIT);
-                break;
-            case('H'):
-                setMapValue(x, y, OBJECT_MAGIC_WELL);
-                break;
-            case('S'):
-                WorldHeroStartLocationX = x;
-                WorldHeroStartLocationY = y;
-                break;
-            case('L'):
-                printf("!!! Warning: Lenin\'s mavzoleum is discontinued. Object ignored! (x,y = %d, %d)\n", x, y);
-                break;
-            case('M'):
-                setMapValue(x, y, OBJECT_MUSHROOMS);
-                break;
-            default:
-                setMapValue(x, y, OBJECT_EMPTY);
-                break;
+                vStaticMapData.push_back(line);
+            }
+            else
+            {
+                // TODO: level loading flags or dynamic objects
+                vDynamicObjectCreationList.push_back(line);
             }
         }
-        scan_result = fscanf(pFile, "\n");
-        if (scan_result != 0)
-            error_counter++;
+
+        line_index++;
     }
 
-    /// Boosts the properties of dynamic objects.
-    for (int i = 0; i < 100; i++)
+    infile.close();
+
+    bool isValidStatic = _loadMapFromStaticData(vStaticMapData);
+    if (!isValidStatic)
     {
-         char indicator = 0;
-         scan_result = fscanf(pFile, "%c\n", &indicator);
-         if (scan_result != 1)
-         {
-             break;
-         }
-         printf("Read indicator from map file <%c>\n", indicator);
-
-         switch(indicator)
-         {
-         // Loading beetles
-         case('J'):
-         {
-             int x, y;
-             fscanf(pFile, "-%d,%d\n", &x, &y);
-             bool place_result = worldAddOneObjectBug(x, y);
-             if (place_result == true)
-             {
-                 printf("DEBUG:   Adding Bug in coords: %d, %d\n", x, y);
-             }
-             else
-             {
-                 printf("   Error: Unable to add Bug in coords: %d, %d\n", x, y);
-                 error_counter++;
-             }
-             break;
-         }
-
-         case('P'):
-         {
-             //printf("   Warning: Tries to add Press, but not implemented!\n");
-             int x, y, phase;
-             fscanf(pFile, "-%d,%d-%d\n", &x, &y, &phase);
-             bool place_result = worldAddOneObjectPress(x, y, phase);
-             if (place_result == true)
-             {
-                 printf("DEBUG:   Adding Press in coords: %d, %d. Phase = %d\n", x, y, phase);
-             }
-             else
-             {
-                 printf("   Error: Unable to add Press in coords: %d, %d. Phase = %d\n", x, y, phase);
-                 error_counter++;
-             }
-             break;
-         }
-
-         case('G'):
-         {
-             int x, y;
-             fscanf(pFile, "-%d,%d\n", &x, &y);
-
-             bool place_result = worldAddOneObjectGhost(x, y);
-             if (place_result == true)
-             {
-                 printf("DEBUG:   Adding Ghost in coords: %d, %d\n", x, y);
-             }
-             else
-             {
-                 printf("   Error: Unable to add Ghost in coords: %d, %d\n", x, y);
-                 error_counter++;
-             }
-
-             break;
-         }
-
-         case('8'):
-         {
-             int x, y;
-             int cloud_w, cloud_h;
-             fscanf(pFile, "-%d,%d-%dx%d\n", &x, &y, &cloud_w, &cloud_h);
-
-             bool place_result = worldAddOneObjectCloud(x, y, cloud_w, cloud_h);
-             if (place_result == true)
-             {
-                 printf("DEBUG:   Adding Cloud in coords: %d, %d\n", x, y);
-             }
-             else
-             {
-                 printf("   Error: Unable to add Cloud in coords: %d, %d\n", x, y);
-                 error_counter++;
-             }
-
-             break;
-         }
-
-         case('R'):
-         {
-             int x, y;
-             fscanf(pFile, "-%d,%d\n", &x, &y);
-
-             bool place_result = worldAddOneObjectRobik(x, y);
-             if (place_result == true)
-             {
-                 printf("DEBUG:   Adding Robik in coords: %d, %d\n", x, y);
-             }
-             else
-             {
-                 printf("   Error: Unable to add Robik in coords: %d, %d\n", x, y);
-                 error_counter++;
-             }
-
-             break;
-         }
-
-         case('C'):
-         {
-             int x, y;
-             fscanf(pFile, "-%d,%d\n", &x, &y);
-
-             bool place_result = worldAddOneObjectCarrier(x, y);
-             if (place_result == true)
-             {
-                 printf("DEBUG:   Adding Carrier in coords: %d, %d\n", x, y);
-             }
-             else
-             {
-                 printf("   Error: Unable to add Carrier in coords: %d, %d\n", x, y);
-                 error_counter++;
-             }
-
-             break;
-         }
-#if 0
-         case('I'):
-         {
-             int x, y;
-             fscanf(pFile, "-%d,%d\n", &x, &y);
-
-             bool place_result =  worldAddOneObjectInterceptors(x, y, 0);
-             if (place_result == true)
-             {
-                 printf("DEBUG:   Adding Interceptors in coords: %d, %d\n", x, y);
-             }
-             else
-             {
-                 printf("   Error: Unable to add Interceptors in coords: %d, %d\n", x, y);
-                 error_counter++;
-             }
-
-             break;
-         }
-#endif
-         case('#'):
-         {
-             printf("DEBUG:   Skipping commented out line\n");
-
-             // Ignore rest of the line
-             char buf_skip[1024];
-             fscanf(pFile, "%s\n", buf_skip);
-
-             break;
-         }
-
-         default:
-             printf("   Error: Unknown object indicator found on map!\n");
-
-             // Ignore rest of the line
-             char buf_skip[1024];
-             fscanf(pFile, "%s\n", buf_skip);
-
-             error_counter++;
-         }
+        printf("Error: Loading static data from level\n");
+        return false;
     }
 
-    /// Closes the file.
-    fclose(pFile);
-
-    printf("DEBUG: Loading complete with %d errors\n", error_counter);
-    if (error_counter > 0)
+    bool isValidDynamic = _loadMapDynamicObjects(vDynamicObjectCreationList);
+    if (!isValidDynamic)
     {
+        printf("Error: Loading dynamic data from level\n");
         return false;
     }
 
