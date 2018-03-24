@@ -141,6 +141,7 @@ int main(int argc, char *argv[])
                 if (g_gameSettings.isEnableDisplayGameCompleteScreen())
                 {
                     printCongratulationMessage();
+                    readInput();
                 }
                 break;
             }
