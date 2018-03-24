@@ -158,7 +158,11 @@ int main(int argc, char *argv[])
 
                 processActions();
 
-                worldStep();
+                bool stepResult = worldStep();
+                if (!stepResult)
+                {
+                    break;
+                }
 
                 // TODO: make characters more fast/vivid
                 updateHudInfoPanelData(hudInfo);

@@ -103,8 +103,8 @@ void getWorldDimensions(int &rW, int &rH)
 
 float worldGetDistance(int x1, int y1, int x2, int y2)
 {
-    float len_x = fabs(x2 - x1);
-    float len_y = fabs(y2 - y1);
+    float len_x = fabsf(x2 - x1);
+    float len_y = fabsf(y2 - y1);
     float len = sqrt(len_x * len_x + len_y * len_y);
     return len;
 }
@@ -275,7 +275,6 @@ void worldDrawLine(int x0, int y0, int x1, int y1)
         float pointX = pointXv + x0;
         float pointY = pointYv + y0;
 
-
         setMapValue(pointX, pointY, OBJECT_WALL);
     }
 }
@@ -289,7 +288,7 @@ int worldGetNumberOfWallsOnLine(int x0, int y0, int x1, int y1, float step)
     float vectorX = x1 - x0; // 4
     float vectorY = y1 - y0; // 5
 
-    float length = sqrt(vectorX*vectorX + vectorY*vectorY);
+    float length = sqrtf(vectorX*vectorX + vectorY*vectorY);
     float vectorNormX = vectorX / length; // 4
     float vectorNormY = vectorY / length; // 5
 
@@ -297,7 +296,7 @@ int worldGetNumberOfWallsOnLine(int x0, int y0, int x1, int y1, float step)
     float multiplier = 0;
 
     float numSamples = length / step;
-    int numSamplesInt = (int)numSamples;
+    int numSamplesInt = static_cast<int>(numSamples);
 
     int lastX = x0;
     int lastY = y0;
@@ -309,8 +308,8 @@ int worldGetNumberOfWallsOnLine(int x0, int y0, int x1, int y1, float step)
         float pointX = pointXv + x0;
         float pointY = pointYv + y0;
 
-        int testX = (int)roundf(pointX);
-        int testY = (int)roundf(pointY);
+        int testX = static_cast<int>(roundf(pointX));
+        int testY = static_cast<int>(roundf(pointY));
 
         int value = getMapValue(testX, testY);
         if (((value == OBJECT_WALL) || (value == OBJECT_WEAK_WALL)) && ((lastX != testX) || (lastY != testY)))
@@ -512,11 +511,18 @@ bool _decodeStaticCodeAndSetMapValue(char staticObjectMapCode, int x, int y)
 
     case('L'):
         isValid = false;
-        [[clang::fallthrough]];
+        //[[clang::fallthrough]];
     default:
         setMapValue(x, y, OBJECT_EMPTY);
         break;
     }
+
+    if (!isValid)
+    {
+        printf("Error: unable to decode static object code <%c> at <%d,%d>\n",
+               staticObjectMapCode, x, y);
+    }
+
     return isValid;
 }
 
