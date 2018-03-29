@@ -286,6 +286,10 @@ bool XObjectPlayerHero::react(int actionCode)
 
     /// processing action "Invincible"
     case(ACTION_TOGGLE_INVINCIBLE):
+        // FIXME: Debug code: place mushroom
+        setMapValue(m_x, m_y, OBJECT_MUSHROOMS);
+
+        // Toggle invincibility mode
         if (m_isInvincible == true)
         {
             m_isInvincible = false;

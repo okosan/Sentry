@@ -38,9 +38,6 @@ const int WORLD_MAX_NUM_CARRIER = 10;
 /// The object is an "Interceptors".
 const int WORLD_MAX_NUM_INTERCEPTORS = 10;
 
-/// The object is a "Mushrooms".
-const int WORLD_MAX_NUM_MUSHROOMS = 10;
-
 /// The object is a "Fox".
 const int WORLD_MAX_NUM_FOX = 10;
 
@@ -126,6 +123,7 @@ bool worldIsObjectInZoneOfDinamite(int oX, int oY, int &DinamiteX, int &Dinamite
 bool worldStep();
 
 bool worldGetFirstObjectLocation(int &objectX, int &objectY, int ObjectType);
+bool worldGetNearestObjectLocation(int sX, int sY, int &targetX, int &targetY, int ObjectType);
 
 /// The World reports the coordinates of the key on the map - used to control the Hero - the Artificial Intelligence
 /// true - if the key is on the Map. It also sets the correct values for keyX, keyY.

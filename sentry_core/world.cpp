@@ -12,6 +12,7 @@
 #include "xobjectrobik.h"
 #include "xobjectcarrier.h"
 #include "xobjectinterceptors.h"
+#include "xobjectfox.h"
 
 #include <math.h>
 #include <string>
@@ -65,6 +66,9 @@ XObjectCarrier carrier[WORLD_MAX_NUM_CARRIER];
 
 /// An array of dynamic Interceptors objects.
 XObjectInterceptors interceptors[WORLD_MAX_NUM_INTERCEPTORS];
+
+/// An array of dynamic Fox objects.
+XObjectFox fox[WORLD_MAX_NUM_FOX];
 
 ///@{
 /// Start Coordinates (X, Y) of the Player Hero on the map.
@@ -713,7 +717,24 @@ bool _decodeDynamicObjectAndAddToWorld(const std::string & line)
         printf("DEBUG: Skipping commented out line\n");
         break;
     }
+    case('F'):
+    {
+        int x, y;
+        sscanf(line.c_str(), "%c-%d,%d", &indicator, &x, &y);
 
+        bool place_result = worldAddOneObjectFox(x, y);
+        if (place_result == true)
+        {
+            printf("DEBUG: Adding Fox in coords: %d, %d\n", x, y);
+        }
+        else
+        {
+            printf("Error: Unable to add Fox in coords: %d, %d\n", x, y);
+            return false;
+        }
+
+        break;
+    }
     default:
         printf("Error: Unknown dynamic object indicator <%c> found on map!\n", indicator);
         return false;
@@ -967,6 +988,19 @@ bool worldAddOneObjectInterceptors(int startX, int startY, XDynamicObject *pCarr
     return false;
 }
 
+/// Adds one Fox object to a map in the specified coordinates (X, Y).
+bool worldAddOneObjectFox(int startX, int startY)
+{
+    for (int i = 0; i < WORLD_MAX_NUM_FOX; i++)
+    {
+        if (!fox[i].isInitialized())
+        {
+            fox[i].init(startX, startY);
+            return true;
+        }
+    }
+    return false;
+}
 /// Is the object in the trap area (input: ghost coordinates, output - trap coordinates).
 /// If the object with coordinates oX, oY falls into the zone of at least one trap, then
 /// return true, and still set trap coordinates (trapX, trapY).
@@ -1084,6 +1118,16 @@ bool worldStep()
         }
     }
 
+    // --- Fox ------------------------
+    if (true)
+    {
+        /// the Fox makes its move
+        for (int i = 0; i < WORLD_MAX_NUM_FOX; i++)
+        {
+            fox[i].stepAI();
+        }
+    }
+
     // --- Robik ------------------------
     if (true)
     {
@@ -1136,6 +1180,7 @@ bool worldStep()
             notifyHeroAboutDamage(INTERCEPTORS_DAMAGE);
         }
     }
+
     return true;
 }
 
@@ -1168,6 +1213,60 @@ bool worldGetFirstObjectLocation(int &objectX, int &objectY, int ObjectType)
     objectX = -1;
     objectY = -1;
     return false;
+}
+
+bool worldGetNearestObjectLocation(int sX, int sY, int &targetX, int &targetY, int ObjectType)
+{
+    struct GroupXY
+    {
+        int x;
+        int y;
+        float distance;
+    };
+    std::vector<GroupXY> vTargetCandidates;
+
+    // Find all potential candidates
+    for (int y = 0; y < H; y++)
+    {
+        for (int x = 0; x < W; x++)
+        {
+            int value = getMapValue(x, y);
+            if (value == ObjectType)  // Object code match at <X,Y>
+            {
+                GroupXY found_candidate;
+
+                found_candidate.x = x;
+                found_candidate.y = y;
+                found_candidate.distance = worldGetDistance(x, y, sX, sY);
+
+                vTargetCandidates.push_back(found_candidate);
+            }
+        }
+    }
+
+    // No objects found
+    if (vTargetCandidates.size() == 0)
+        return false;
+
+    // Find nearest
+    int nearest_index = -1;
+    float minKnownDistance = 999999.0f;  // FIXME
+    for (int i = 0; i < vTargetCandidates.size(); i++)
+    {
+        GroupXY &candidate = vTargetCandidates[i];
+        if (candidate.distance < minKnownDistance)
+        {
+            nearest_index = i;
+            minKnownDistance = candidate.distance;
+        }
+    }
+
+    GroupXY &nearestObject = vTargetCandidates[nearest_index];
+
+    targetX = nearestObject.x;
+    targetY = nearestObject.y;
+
+    return true;
 }
 
 
@@ -1288,6 +1387,12 @@ void worldDestroyAllDynamicObjects()
     for (int i = 0; i < WORLD_MAX_NUM_INTERCEPTORS; i++)
     {
         interceptors[i] = XObjectInterceptors();
+    }
+
+    // -----
+    for (int i = 0; i < WORLD_MAX_NUM_FOX; i++)
+    {
+        fox[i] = XObjectFox();
     }
 }
 

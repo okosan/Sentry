@@ -11,6 +11,7 @@
 #include "xobjectrobik.h"
 #include "xobjectcarrier.h"
 #include "xobjectinterceptors.h"
+#include "xobjectfox.h"
 
 #include <cassert>
 #include <string>
@@ -39,6 +40,7 @@ extern XObjectBug bugs[WORLD_MAX_NUM_BUGS];
 extern XObjectRobik robiks[WORLD_MAX_NUM_ROBIK];
 extern XObjectCarrier carrier[WORLD_MAX_NUM_CARRIER];
 extern XObjectInterceptors interceptors[WORLD_MAX_NUM_INTERCEPTORS];
+extern XObjectFox fox[WORLD_MAX_NUM_FOX];
 
 
 bool g_renderIsPdCursesInitialized = false;  /// indicates if PDC library is initialised
@@ -401,6 +403,17 @@ void renderMapPdc(const RENDER_HUD_INFOPANEL &hudInfo)
             vRenderDescriptorList.insert(vRenderDescriptorList.end(), vObjectRD.begin(), vObjectRD.end());
         }
     }
+
+    /// Ask the Fox how they want to draw themselves.
+    {
+        for (int i = 0; i < WORLD_MAX_NUM_FOX; i++)
+        {
+            //isDynamicObjectRendered = fox[i].render(x, y);
+            std::vector<OBJECT_RENDER_DESCRIPTOR> vObjectRD = fox[i].render();
+            vRenderDescriptorList.insert(vRenderDescriptorList.end(), vObjectRD.begin(), vObjectRD.end());
+        }
+    }
+
     /// Offset of the map coordinate system for drawing.
     int drawOriginX = 0;
     int drawOriginY = 2;
