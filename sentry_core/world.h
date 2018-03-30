@@ -12,6 +12,7 @@ const int WORLD_MAX_H = 300;
 
 void getWorldDimensions(int &w, int &h);
 float worldGetDistance(int x1, int y1, int x2, int y2);
+bool worldGetPathDistance(int x1, int y1, int x2, int y2, float &rDistance);
 
 
 /// The character is a Hero.

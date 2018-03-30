@@ -113,6 +113,25 @@ float worldGetDistance(int x1, int y1, int x2, int y2)
     return len;
 }
 
+bool worldGetPathDistance(int x1, int y1, int x2, int y2, float &rDistance)
+{
+    std::list<CoordXY> vPath;
+    bool allow_diagonal_moves = true;
+    bool path_found = worldGetAStarPath(x1, y1, x2, y2,
+                                        vPath, rDistance,
+                                        allow_diagonal_moves);
+    if (!path_found)
+        return false;
+
+    if (vPath.begin() == vPath.end())
+    {
+        rDistance = 0;
+        return true;
+    }
+
+    return true;
+}
+
 void notifyHeroAboutDamage(int damagePoints)
 {
     hero.notifyAboutDamage(damagePoints);
@@ -1237,7 +1256,9 @@ bool worldGetNearestObjectLocation(int sX, int sY, int &targetX, int &targetY, i
 
                 found_candidate.x = x;
                 found_candidate.y = y;
-                found_candidate.distance = worldGetDistance(x, y, sX, sY);
+                bool is_reachable = worldGetPathDistance(x, y, sX, sY, found_candidate.distance);
+                if (!is_reachable)
+                    continue;  // do not include into candidate list
 
                 vTargetCandidates.push_back(found_candidate);
             }
