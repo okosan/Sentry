@@ -37,7 +37,11 @@ SOURCES += main.cpp \
     utils.cpp \
     xobjectcarrier.cpp \
     xobjectinterceptors.cpp \
-    xobjectfox.cpp
+    xobjectfox.cpp \
+    world_pathfinder.cpp \
+    pathfinder/cell.cpp \
+    pathfinder/map.cpp \
+    pathfinder/pathfinder.cpp
 
 HEADERS += \
     sound.h \
@@ -57,4 +61,9 @@ HEADERS += \
     utils.h \
     xobjectcarrier.h \
     xobjectinterceptors.h \
-    xobjectfox.h
+    xobjectfox.h \
+    pathfinder/arr2d.h \
+    pathfinder/arr2d_impl.h \
+    pathfinder/cell.h \
+    pathfinder/map.h \
+    pathfinder/pathfinder.h

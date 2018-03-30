@@ -140,8 +140,8 @@ void XObjectBug::stepAI()
         /// The movement is confirmed only if there is no wall-barrier at that point.
         /// Bug is forbidden to walk through the door (any).
         int value = getMapValue(newX, newY);
-        if ((value != OBJECT_WALL) && (value != OBJECT_WEAK_WALL) &&
-            (value != OBJECT_DOOR) && (value != OBJECT_GREEN_DOOR) && (value != OBJECT_BLUE_DOOR))
+
+        if (!worldIsSolidObstacle(value))
         {
             m_x = newX;
             m_y = newY;

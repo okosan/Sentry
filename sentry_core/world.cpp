@@ -1249,9 +1249,9 @@ bool worldGetNearestObjectLocation(int sX, int sY, int &targetX, int &targetY, i
         return false;
 
     // Find nearest
-    int nearest_index = -1;
+    size_t nearest_index = 0;
     float minKnownDistance = 999999.0f;  // FIXME
-    for (int i = 0; i < vTargetCandidates.size(); i++)
+    for (size_t i = 0; i < vTargetCandidates.size(); i++)
     {
         GroupXY &candidate = vTargetCandidates[i];
         if (candidate.distance < minKnownDistance)

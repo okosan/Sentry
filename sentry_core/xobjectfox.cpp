@@ -8,6 +8,7 @@
 
 #include <cstdio>
 #include <vector>
+#include <cassert>
 
 extern XObjectPlayerHero hero;
 
@@ -37,47 +38,35 @@ void XObjectFox::stepAI()
     int newX = m_x;
     int newY = m_y;
 
-    // calculate next move
-    for (int attempt = 0; attempt < 10; attempt++)
+    // calculate next move - use A* pathfinding
     {
-        int checkX = newX;
-        int checkY = newY;
-        bool isVerticalMove = (rand() % 2 == 0); // [0 .. 1]
-
-        if (isVerticalMove)
-        {
-            int randomY = (rand() % 3) - 1; // [-1 0 1]
-            checkY += randomY;
-        }
-        else
-        {
-            int randomX = (rand() % 3) - 1; // [-1 0 1]
-            checkX += randomX;
-        }
-
+        // identify target mushroom location (nearest) on map
         int targetX, targetY;
         bool found = worldGetNearestObjectLocation(m_x, m_y, targetX, targetY, OBJECT_MUSHROOMS);
         if (!found)
             return;
 
-        float distanceBefore = worldGetDistance(m_x, m_y, targetX, targetY);
-        float distanceAfter = worldGetDistance(checkX, checkY, targetX, targetY);
+        // next movement point
+        std::list<CoordXY> vPath;
+        float distanceMeasured;
+        bool allow_diagonal_moves = true;
+        bool path_found = worldGetAStarPath(m_x, m_y, targetX, targetY,
+                                            vPath, distanceMeasured,
+                                            allow_diagonal_moves);
+        if (!path_found)
+            return;
 
-        if (distanceAfter < distanceBefore)
-        {
-            // allow movement
-            newX = checkX;
-            newY = checkY;
-            break;
-        }
-    } // for
+        assert(vPath.begin() != vPath.end());
+        const CoordXY &coord_next = *vPath.begin();
+
+        newX = coord_next.x;
+        newY = coord_next.y;
+    }
 
     /// The movement is confirmed only if there is no wall-barrier at that point.
     /// Forbidden to walk through the door (any).
     int value = getMapValue(newX, newY);
-    if ((value != OBJECT_WALL) && (value != OBJECT_WEAK_WALL) &&
-        (value != OBJECT_DOOR) && (value != OBJECT_GREEN_DOOR) &&
-        (value != OBJECT_BLUE_DOOR))
+    if (!worldIsSolidObstacle(value))
     {
         m_x = newX;
         m_y = newY;

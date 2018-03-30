@@ -2,6 +2,7 @@
 #define WORLD_H
 
 #include <string>
+#include <list>
 #include "xdynamicobject.h"
 
 class XGameSettings;
@@ -68,6 +69,12 @@ const int MEDKIT_HEALS = 25;
 const int MAGIC_WELL_HEALS = 1;
 const int MUSHROOMS_HEALS = 10;
 
+struct CoordXY
+{
+    int x;
+    int y;
+};
+
 /// Checks whether the  object code is valid.
 bool isValidValue(int value);
 
@@ -122,8 +129,15 @@ bool worldIsObjectInZoneOfDinamite(int oX, int oY, int &DinamiteX, int &Dinamite
 /// Every cycle of the game the World makes its move. Each object makes its own movements.
 bool worldStep();
 
+bool worldIsSolidObstacle(int value);
+
 bool worldGetFirstObjectLocation(int &objectX, int &objectY, int ObjectType);
 bool worldGetNearestObjectLocation(int sX, int sY, int &targetX, int &targetY, int ObjectType);
+
+bool worldGetAStarPath(int srcX, int srcY, int dstX, int dstY,
+                       std::list< CoordXY > &rvPath,
+                       float &rDistance,
+                       bool allow_diagonal_moves = true);
 
 /// The World reports the coordinates of the key on the map - used to control the Hero - the Artificial Intelligence
 /// true - if the key is on the Map. It also sets the correct values for keyX, keyY.
