@@ -23,6 +23,9 @@ bool worldGetAStarPath(int srcX, int srcY, int dstX, int dstY,
                        float &rDistance,
                        bool allow_diagonal_moves)
 {
+    rvPath.clear();
+    rDistance = 0;
+
     // TODO: make "allow_diagonal_moves" work
     int W;
     int H;
@@ -54,8 +57,8 @@ bool worldGetAStarPath(int srcX, int srcY, int dstX, int dstY,
     pathfinder.init(&map);
 
     // intentionally swap dst and src points for pathfinder library
-    int result = pathfinder.find(dstX, dstY, srcX, srcY);
-    if (XFAIL(result))
+    bool result = pathfinder.find(dstX, dstY, srcX, srcY);
+    if (!result)
     {
         return false;  // no path found
     }
@@ -64,7 +67,6 @@ bool worldGetAStarPath(int srcX, int srcY, int dstX, int dstY,
     std::list<CELL> pathList = pathfinder.pathList;
 
     int waypoint_index = -1;
-    rvPath.clear();
     for (const auto & pathEntry : pathList)
     {
         waypoint_index++;

@@ -56,7 +56,9 @@ void XObjectFox::stepAI()
         if (!path_found)
             return;
 
-        assert(vPath.begin() != vPath.end());
+        if (vPath.begin() == vPath.end())
+            return;  // path is found, but no movement is required to reach target
+
         const CoordXY &coord_next = *vPath.begin();
 
         newX = coord_next.x;
