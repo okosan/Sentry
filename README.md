@@ -4,9 +4,9 @@ Sentry is rogue-like ASCII-based game.
 
 ## Build instructions
 * Clone source ```git clone git@github.com:okosan/Sentry.git```
-* Open Qt project file with Qt Creator (Qt 4.5 or higher is recommended)
+* Open Qt project file ```sentry.pro``` with Qt Creator (Qt 5.5 or higher is recommended)
 * On Windows: ```Build->Build all``` should just work (assuming Mingw32 compiler setup).
-* On Linux: before build - make sure PDCurses library is installed (edit Sentry/sentry_core/sentry_core.pro if necessary to specify full library path).
+* On Linux: before build - make sure PDCurses library is installed (edit ```Sentry/sentry_core/sentry_core.pro``` if necessary to specify full library path).
 
 ## How to start
 Playing game is a good start.
@@ -59,6 +59,7 @@ Playing game is a good start.
 |   I    | Interceptor                         |
 |   8    | Toxic cloud                         |
 |   M    | Mushroom                            |
+|   ї    | Fox                                 |
 ```
 
 ## Legal Stuff
