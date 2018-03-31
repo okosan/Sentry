@@ -147,7 +147,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                // We continue the logic
+                // Main game logic goes here
                 g_frameNumber++;
 
                 readInput();

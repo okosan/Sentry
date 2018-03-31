@@ -57,12 +57,16 @@ void XObjectFox::stepAI()
             return;
 
         if (vPath.begin() == vPath.end())
-            return;  // path is found, but no movement is required to reach target
+        {
+            // path is found, but no movement is required to reach target
+        }
+        else
+        {
+            const CoordXY &coord_next = *vPath.begin();
 
-        const CoordXY &coord_next = *vPath.begin();
-
-        newX = coord_next.x;
-        newY = coord_next.y;
+            newX = coord_next.x;
+            newY = coord_next.y;
+        }
     }
 
     /// The movement is confirmed only if there is no wall-barrier at that point.
