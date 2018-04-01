@@ -4,7 +4,6 @@
  * Copyright (c) 2016-18
  * License: public domain or MIT or GPL
  */
-#include <QCoreApplication>
 
 #include "xgamesettings.h"
 #include "sound.h"
@@ -80,8 +79,6 @@ void updateHudInfoPanelData(RENDER_HUD_INFOPANEL &hudInfo)
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
-
     g_gameSettings.init(argc, argv);
 
     //setlocale(LC_ALL, "");
@@ -173,5 +170,4 @@ int main(int argc, char *argv[])
     }
 
     unloadRender();
-    //return a.exec();
 }
