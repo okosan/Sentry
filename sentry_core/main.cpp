@@ -28,7 +28,6 @@ extern bool m_displayGameStatistics;
 
 extern std::string m_currentLevelName;
 
-
 int g_frameNumber = -1;
 
 XGameSettings g_gameSettings;
@@ -111,6 +110,8 @@ int main(int argc, char *argv[])
     updateHudInfoPanelData(hudInfo);
     drawScene(hudInfo);
 
+    int number_of_steps_from_last_mushrooms_placement = 0;
+
     while(1)
     {
         if (m_displayGameStatistics && g_gameSettings.isEnableDisplayLevelCompleteScreen())
@@ -146,6 +147,23 @@ int main(int argc, char *argv[])
             {
                 // Main game logic goes here
                 g_frameNumber++;
+
+                if (number_of_steps_from_last_mushrooms_placement > 10)
+                {
+                    int W, H;
+                    getWorldDimensions(W, H);
+
+                    int x = rand() % W;
+                    int y = rand() % H;
+
+                    int value = getMapValue(x, y);
+                    if (value == OBJECT_EMPTY)
+                    {
+                        setMapValue(x, y, OBJECT_MUSHROOMS);
+                        number_of_steps_from_last_mushrooms_placement = 0;
+                    }
+                }
+                number_of_steps_from_last_mushrooms_placement++;
 
                 readInput();
 
