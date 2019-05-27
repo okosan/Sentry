@@ -1,5 +1,9 @@
 ﻿#include "pathfinder.h"
 
+#include "common.h"
+
+#include <cmath>
+
 float SQR(float val)
 {
     return val*val;
@@ -196,6 +200,7 @@ bool PATHFINDER::find(int srcX, int srcY, int dstX, int dstY, int findflag, cons
                 if (verbose) fprintf(f,"\t ... and alternative G if to go thru this item is %f\n",alternative_G);
 
                 CELL openC = *openItem;
+                UNUSED(openC);
                 if (openItem->g < alternative_G)
                 {
                     if (verbose) fprintf(f,"\t ... but open item is itself %f < alternative %f. so skip it\n", openItem->g, alternative_G);
@@ -270,7 +275,8 @@ bool PATHFINDER::find(int srcX, int srcY, int dstX, int dstY, int findflag, cons
 
 float PATHFINDER::getGsibling(int xs, int ys, int xd, int yd, int f_deep)
 {
-    if (fabs((float)(xd-xs))+fabs((float)(yd-ys)) <= 1.0f)
+    UNUSED(f_deep);
+    if (fabsf((float)(xd-xs))+fabsf((float)(yd-ys)) <= 1.0f)
     {
         return 1;
     }

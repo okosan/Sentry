@@ -66,4 +66,5 @@ HEADERS += \
     pathfinder/arr2d_impl.h \
     pathfinder/cell.h \
     pathfinder/map.h \
-    pathfinder/pathfinder.h
+    pathfinder/pathfinder.h \
+    common.h
