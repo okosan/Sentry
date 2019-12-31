@@ -106,9 +106,18 @@ void placeObjects(int numberOfObjectsToPlace, int typeOfObjectToPlace);
 bool worldGetGoodObjectStartCoords(int &x, int &y);
 
 
+struct GenerateMapConfig
+{
+    unsigned map_seed = 0;
+    unsigned dim_x = 0;
+    unsigned dim_y = 0;
+    unsigned start_x = 0;
+    unsigned start_y = 0;
+};
+
 /// Generates a map. Compiles the map based on the perimeter and additional walls.
 /// Then he puts the keys, the Finish. Arranges all the bombs and medkit.
-void generateMap();
+void generateMap(const GenerateMapConfig &config);
 
 /// Loads a map from a file. All static objects and map sizes are loaded.
 bool loadMapFromFile(int level);

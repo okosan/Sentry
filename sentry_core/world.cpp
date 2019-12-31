@@ -13,6 +13,9 @@
 #include "xobjectcarrier.h"
 #include "xobjectinterceptors.h"
 #include "xobjectfox.h"
+#include "xgamesettings.h"
+
+#include "utils.h"
 
 #include <math.h>
 #include <string>
@@ -84,6 +87,7 @@ int matrix[WORLD_MAX_W][WORLD_MAX_H];
 
 int m_level = -1;
 int m_levelCount = -1;
+bool m_fGeneratedMap = false;
 std::string m_currentLevelName;
 
 /// The check box indicates whether the current level is complete.
@@ -349,9 +353,12 @@ int worldGetNumberOfWallsOnLine(int x0, int y0, int x1, int y1, float step)
 
 /// Generates test card. It compiles a card from the driver and additional walls.
 /// Then decomposes the Keys, the Finish.  Plays all the bombs and first aid kits.
-void generateMap()
+void generateMap(const GenerateMapConfig &gm_config)
 {
-    W = 30+10; //  width
+    // TODO: use gm_config
+    m_currentLevelName = ssprintf("GeneratedLevel%u", gm_config.map_seed);
+
+    W = 30+10;  // width
     H = 12+6;   // height
 
     WorldHeroStartLocationX = 3;
@@ -534,7 +541,9 @@ bool _decodeStaticCodeAndSetMapValue(char staticObjectMapCode, int x, int y)
 
     case('L'):
         isValid = false;
-        //[[clang::fallthrough]];
+        setMapValue(x, y, OBJECT_EMPTY);
+        break;
+
     default:
         setMapValue(x, y, OBJECT_EMPTY);
         break;
@@ -876,9 +885,18 @@ bool initWorld(const XGameSettings *pGameSettings)
 {
     world_pGameSettings = pGameSettings;
 
-    bool f_generateMap = false;
+    m_fGeneratedMap = false;
 
-    m_levelCount = worldCountNumberOfLevels();
+    if (pGameSettings->isGenerateMap())
+    {
+        m_fGeneratedMap = true;
+        m_levelCount = pGameSettings->getNumGeneratedMaps();
+    }
+    else
+    {
+        m_levelCount = worldCountNumberOfLevels();
+    }
+
     printf("DEBUG: Number of levels total = %d\n", m_levelCount);
 
     if (m_levelCount == 0)
@@ -889,9 +907,11 @@ bool initWorld(const XGameSettings *pGameSettings)
 
     m_level = 1;
 
-    if (f_generateMap)
+    if (m_fGeneratedMap)
     {
-        generateMap();
+        GenerateMapConfig gm_config;
+        gm_config.map_seed = m_level;
+        generateMap(gm_config);
     }
     else
     {
@@ -1436,7 +1456,18 @@ bool worldProgressToNextLevel()
         worldDestroyAllDynamicObjects();
 
         m_level++;
-        bool isLoaded = loadMapFromFile(m_level);
+        bool isLoaded = false;
+        if (m_fGeneratedMap)
+        {
+            GenerateMapConfig gm_config;
+            gm_config.map_seed = m_level;
+            generateMap(gm_config);
+            isLoaded = true;
+        }
+        else
+        {
+            isLoaded = loadMapFromFile(m_level);
+        }
         if (!isLoaded)
         {
             // saveGame(); // TODO: add game saving here

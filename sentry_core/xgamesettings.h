@@ -45,6 +45,16 @@ public:
         return m_fEnableDisplayGameCompleteScreen;
     }
 
+    bool isGenerateMap() const
+    {
+        return m_fGenerateMap;
+    }
+
+    unsigned getNumGeneratedMaps() const
+    {
+        return m_numGenerateLevelCount;
+    }
+
 private:
     bool m_fDrawDiscoveryMap;   /// Show Map of Intelligence
     bool m_fDrawFogOfViewMap;   /// Display Map of the Fog
@@ -57,6 +67,9 @@ private:
 
     bool m_fEnableDisplayLevelCompleteScreen;
     bool m_fEnableDisplayGameCompleteScreen;
+
+    bool m_fGenerateMap;
+    unsigned m_numGenerateLevelCount;
 };
 
 #endif // XGAMESETTINGS_H

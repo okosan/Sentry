@@ -16,6 +16,9 @@ XGameSettings::XGameSettings()
 
     m_fEnableDisplayLevelCompleteScreen = true;
     m_fEnableDisplayGameCompleteScreen = true;
+
+    m_fGenerateMap = false;
+    m_numGenerateLevelCount = 0;
 }
 
 /// return false if initialisation failed
@@ -37,6 +40,11 @@ bool XGameSettings::init(int argc, char *argv[])
 
             m_fEnableDisplayLevelCompleteScreen = false;
             m_fEnableDisplayGameCompleteScreen = false;
+        }
+        else if (param == "--generate")
+        {
+            m_fGenerateMap = true;
+            m_numGenerateLevelCount = 999;  // FIXME: from cmd line or const
         }
     }
 

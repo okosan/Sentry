@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 {
     g_gameSettings.init(argc, argv);
 
-    //setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "");
 
     g_frameNumber = 0;
     bool isInitialized = initWorld(&g_gameSettings);
